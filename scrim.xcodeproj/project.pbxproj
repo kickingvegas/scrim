@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		D9FFC2952D9B186D000DBD21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9FFC2792D9B186C000DBD21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9FFC2802D9B186C000DBD21;
+			remoteInfo = scrim;
+		};
+		D9FFC29F2D9B186D000DBD21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9FFC2792D9B186C000DBD21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9FFC2802D9B186C000DBD21;
+			remoteInfo = scrim;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D9FFC2812D9B186C000DBD21 /* scrim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scrim.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9FFC2942D9B186D000DBD21 /* scrimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = scrimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9FFC29E2D9B186D000DBD21 /* scrimUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = scrimUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D9FFC2832D9B186C000DBD21 /* scrim */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = scrim;
+			sourceTree = "<group>";
+		};
+		D9FFC2972D9B186D000DBD21 /* scrimTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = scrimTests;
+			sourceTree = "<group>";
+		};
+		D9FFC2A12D9B186D000DBD21 /* scrimUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = scrimUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D9FFC27E2D9B186C000DBD21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FFC2912D9B186D000DBD21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FFC29B2D9B186D000DBD21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D9FFC2782D9B186C000DBD21 = {
+			isa = PBXGroup;
+			children = (
+				D9FFC2832D9B186C000DBD21 /* scrim */,
+				D9FFC2972D9B186D000DBD21 /* scrimTests */,
+				D9FFC2A12D9B186D000DBD21 /* scrimUITests */,
+				D9FFC2822D9B186C000DBD21 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D9FFC2822D9B186C000DBD21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9FFC2812D9B186C000DBD21 /* scrim.app */,
+				D9FFC2942D9B186D000DBD21 /* scrimTests.xctest */,
+				D9FFC29E2D9B186D000DBD21 /* scrimUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D9FFC2802D9B186C000DBD21 /* scrim */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9FFC2A82D9B186D000DBD21 /* Build configuration list for PBXNativeTarget "scrim" */;
+			buildPhases = (
+				D9FFC27D2D9B186C000DBD21 /* Sources */,
+				D9FFC27E2D9B186C000DBD21 /* Frameworks */,
+				D9FFC27F2D9B186C000DBD21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D9FFC2832D9B186C000DBD21 /* scrim */,
+			);
+			name = scrim;
+			packageProductDependencies = (
+			);
+			productName = scrim;
+			productReference = D9FFC2812D9B186C000DBD21 /* scrim.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D9FFC2932D9B186D000DBD21 /* scrimTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9FFC2AB2D9B186D000DBD21 /* Build configuration list for PBXNativeTarget "scrimTests" */;
+			buildPhases = (
+				D9FFC2902D9B186D000DBD21 /* Sources */,
+				D9FFC2912D9B186D000DBD21 /* Frameworks */,
+				D9FFC2922D9B186D000DBD21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9FFC2962D9B186D000DBD21 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D9FFC2972D9B186D000DBD21 /* scrimTests */,
+			);
+			name = scrimTests;
+			packageProductDependencies = (
+			);
+			productName = scrimTests;
+			productReference = D9FFC2942D9B186D000DBD21 /* scrimTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D9FFC29D2D9B186D000DBD21 /* scrimUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9FFC2AE2D9B186D000DBD21 /* Build configuration list for PBXNativeTarget "scrimUITests" */;
+			buildPhases = (
+				D9FFC29A2D9B186D000DBD21 /* Sources */,
+				D9FFC29B2D9B186D000DBD21 /* Frameworks */,
+				D9FFC29C2D9B186D000DBD21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9FFC2A02D9B186D000DBD21 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D9FFC2A12D9B186D000DBD21 /* scrimUITests */,
+			);
+			name = scrimUITests;
+			packageProductDependencies = (
+			);
+			productName = scrimUITests;
+			productReference = D9FFC29E2D9B186D000DBD21 /* scrimUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D9FFC2792D9B186C000DBD21 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					D9FFC2802D9B186C000DBD21 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					D9FFC2932D9B186D000DBD21 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = D9FFC2802D9B186C000DBD21;
+					};
+					D9FFC29D2D9B186D000DBD21 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = D9FFC2802D9B186C000DBD21;
+					};
+				};
+			};
+			buildConfigurationList = D9FFC27C2D9B186C000DBD21 /* Build configuration list for PBXProject "scrim" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D9FFC2782D9B186C000DBD21;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D9FFC2822D9B186C000DBD21 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D9FFC2802D9B186C000DBD21 /* scrim */,
+				D9FFC2932D9B186D000DBD21 /* scrimTests */,
+				D9FFC29D2D9B186D000DBD21 /* scrimUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D9FFC27F2D9B186C000DBD21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FFC2922D9B186D000DBD21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FFC29C2D9B186D000DBD21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D9FFC27D2D9B186C000DBD21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FFC2902D9B186D000DBD21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FFC29A2D9B186D000DBD21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D9FFC2962D9B186D000DBD21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9FFC2802D9B186C000DBD21 /* scrim */;
+			targetProxy = D9FFC2952D9B186D000DBD21 /* PBXContainerItemProxy */;
+		};
+		D9FFC2A02D9B186D000DBD21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9FFC2802D9B186C000DBD21 /* scrim */;
+			targetProxy = D9FFC29F2D9B186D000DBD21 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D9FFC2A62D9B186D000DBD21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D9FFC2A72D9B186D000DBD21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		D9FFC2A92D9B186D000DBD21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = scrim/scrim.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"scrim/Preview Content\"";
+				DEVELOPMENT_TEAM = UD5428GZB3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yummymelon.scrim;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D9FFC2AA2D9B186D000DBD21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = scrim/scrim.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"scrim/Preview Content\"";
+				DEVELOPMENT_TEAM = UD5428GZB3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yummymelon.scrim;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D9FFC2AC2D9B186D000DBD21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UD5428GZB3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yummymelon.scrimTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/scrim.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/scrim";
+			};
+			name = Debug;
+		};
+		D9FFC2AD2D9B186D000DBD21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UD5428GZB3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yummymelon.scrimTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/scrim.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/scrim";
+			};
+			name = Release;
+		};
+		D9FFC2AF2D9B186D000DBD21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UD5428GZB3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yummymelon.scrimUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = scrim;
+			};
+			name = Debug;
+		};
+		D9FFC2B02D9B186D000DBD21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UD5428GZB3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yummymelon.scrimUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = scrim;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D9FFC27C2D9B186C000DBD21 /* Build configuration list for PBXProject "scrim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FFC2A62D9B186D000DBD21 /* Debug */,
+				D9FFC2A72D9B186D000DBD21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9FFC2A82D9B186D000DBD21 /* Build configuration list for PBXNativeTarget "scrim" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FFC2A92D9B186D000DBD21 /* Debug */,
+				D9FFC2AA2D9B186D000DBD21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9FFC2AB2D9B186D000DBD21 /* Build configuration list for PBXNativeTarget "scrimTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FFC2AC2D9B186D000DBD21 /* Debug */,
+				D9FFC2AD2D9B186D000DBD21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9FFC2AE2D9B186D000DBD21 /* Build configuration list for PBXNativeTarget "scrimUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FFC2AF2D9B186D000DBD21 /* Debug */,
+				D9FFC2B02D9B186D000DBD21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D9FFC2792D9B186C000DBD21 /* Project object */;
+}
