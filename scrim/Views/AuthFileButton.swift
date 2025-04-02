@@ -21,16 +21,22 @@ import SwiftUI
 
 struct AuthFileButton: View {
     @State private var showFileImporter = false
-    @Environment(ScrimDefaults.self) var kvDefaults
-
+    @Environment(ScrimDefaults.self) var scrimDefaults
     @Binding var authButtonDisabled: Bool
+    
+    @State private var showingAlert = false
+    @State private var alertMessage: String = "Alert"
+
 
     var body: some View {
         Button {
             showFileImporter = true
         } label: {
-            Label("Choose Server File", systemImage: "folder.circle")
+            Label("Choose Secret File", systemImage: "lock")
+                .font(.title2)
+                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
         }
+        
         .fileImporter(
             isPresented: $showFileImporter,
             allowedContentTypes: [.data]
@@ -38,85 +44,92 @@ struct AuthFileButton: View {
             switch result {
             case .success(let file):
                 // gain access to the directory
-
+                
                 guard file.isFileURL else {
                     // This should always be true.
+                    alertMessage = "ERROR: Unexpected file format. Please check your Emacs configuration and try again."
+                    showingAlert = true
                     return
                 }
-
+                
                 if file.lastPathComponent != "server" {
-                    // TODO: need to handle
-                    print("Nope")
+                    alertMessage = ("ERROR: Scrim expects this shared secret file to be named 'server'. " +
+                                    "Please check your Emacs configuration and try again.")
+                    showingAlert = true
+                    return
                 }
-
-
+                
                 let serverRegex = /server\/server$/
-
+                
                 if file.absoluteString.contains(serverRegex) {
-                    print("ok found!")
-                } else {
-                    // TODO: need to handle
-                }
-
-                let gotAccess = file.startAccessingSecurityScopedResource()
-                if !gotAccess { return }
-                // access the directory URL
-                // (read templates in the directory, make a bookmark, etc.)
-                // onTemplatesDirectoryPicked(directory)
-                // release access
-
-                print(file.absoluteString)
-
-                do {
-                    let bd = try file.bookmarkData(
-                        options: [.withSecurityScope]
-                    )
-
-                    print ("bookmark data created")
-
-                    var stale: Bool = false
-
-                    let bURL = try URL(resolvingBookmarkData: bd, bookmarkDataIsStale: &stale)
-                    print(bURL.absoluteString)
-
-                    // TODO: need to figure out how to get top level
-                    //let kvDefaults = KvDefaults()
-
-                    kvDefaults.setBookmark(bd)
-
-                } catch {
-                    print("ERROR: can not create bookmark data")
-                }
-
-                do {
-
-                    let data = try Data(contentsOf: file)
-                    if let buf = String(data: data, encoding: .utf8) {
-                        print(buf)
+                    // print("ok found!")
+                    let gotAccess = file.startAccessingSecurityScopedResource()
+                    if !gotAccess {
+                        alertMessage = "ERROR: unable to access security scoped resource."
+                        showingAlert = true
+                        return
                     }
-
-                } catch {
-                    print("ERROR: can not read auth file")
+                    // access the directory URL
+                    // (read templates in the directory, make a bookmark, etc.)
+                    // onTemplatesDirectoryPicked(directory)
+                    // release access
+                    
+                    // print(file.absoluteString)
+                    
+                    do {
+                        let bd = try file.bookmarkData(
+                            options: [.withSecurityScope]
+                        )
+                        
+                        // print ("bookmark data created")
+                        /// Test code to inspect bd
+                        // var stale: Bool = false
+                        // let bURL = try URL(resolvingBookmarkData: bd, bookmarkDataIsStale: &stale)
+                        // print(bURL.absoluteString)
+                        
+                        scrimDefaults.setBookmark(bd)
+                        
+                    } catch {
+                        alertMessage = "ERROR: can not create bookmark data."
+                        showingAlert = true
+                        return
+                    }
+                    
+                    do {
+                        
+                        let data = try Data(contentsOf: file)
+                        if let buf = String(data: data, encoding: .utf8) {
+                            print(buf)
+                        }
+                        
+                    } catch {
+                        alertMessage = "ERROR: can not read shared secrete file."
+                        showingAlert = true
+                    }
+                    
+                    file.stopAccessingSecurityScopedResource()
+                    authButtonDisabled = scrimDefaults.authKey != nil
+                } else {
+                    alertMessage = ("ERROR: The shared secret file should be in a folder named 'server'. " +
+                                    "Please try again.")
+                    showingAlert = true
                 }
-
-                file.stopAccessingSecurityScopedResource()
-                authButtonDisabled = kvDefaults.authKey != nil
-
-
+                
             case .failure(let error):
-                // handle error
-                print(error)
+                alertMessage = error.localizedDescription
+                showingAlert = true
             }
         }
-
+        .alert(alertMessage, isPresented: $showingAlert) {
+            Button("OK", role: .cancel) {
+                showingAlert = false
+            }
+        }
         .fileDialogBrowserOptions([.includeHiddenFiles])
-
     }
-
-
 }
 
 #Preview {
     @Previewable @State var authButtonDisabled: Bool = false
-    AuthFileButton(authButtonDisabled: $authButtonDisabled)
+    AuthFileButton(authButtonDisabled: $authButtonDisabled).environment(ScrimDefaults.shared)
 }

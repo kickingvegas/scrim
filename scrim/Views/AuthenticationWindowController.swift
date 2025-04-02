@@ -20,24 +20,21 @@
 import Cocoa
 import SwiftUI
 
-class HomeWindowController: NSWindowController {
-
+class AuthenticationWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
-
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
 
     convenience init() {
-        let homeWindowView = HomeWindowView().environment(ScrimDefaults.shared).frame(width: 600, height: 800)
+        let authenticationTopView = AuthenticationWorkflow.AuthenticationTopView()
+            .environment(ScrimDefaults.shared)
+            .frame(width: 700, height: 380)
 
-        let hostingController = NSHostingController(rootView: homeWindowView)
+        let hostingController = NSHostingController(rootView: authenticationTopView)
         let window = NSWindow(contentViewController: hostingController)
-        window.setContentSize(NSSize(width: 400, height: 300))
         window.styleMask = [.titled, .closable, .miniaturizable, .resizable]
-        window.title = "Scrim"
-
+        window.title = "Scrim Setup"
         self.init(window: window)
-
     }
 }
