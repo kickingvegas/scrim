@@ -65,7 +65,7 @@ public class ScrimDefaults: NSObject {
 
                         if let last = tempList.last {
                             authKey = last
-                            logger.debug("AuthKey: \(self.authKey ?? "unknown")")
+                            // logger.debug("AuthKey: \(self.authKey ?? "unknown")")
                         }
 
                         bURL.stopAccessingSecurityScopedResource()
@@ -120,7 +120,7 @@ public class ScrimDefaults: NSObject {
 
                     if let last = tempList.last {
                         authKey = last
-                        logger.debug("AuthKey: \(self.authKey ?? "unknown")")
+                        // logger.debug("AuthKey: \(self.authKey ?? "unknown")")
                     }
 
                 }

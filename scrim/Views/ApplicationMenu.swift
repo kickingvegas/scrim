@@ -21,7 +21,7 @@ import Cocoa
 
 class ApplicationMenu: NSObject {
     let menu = NSMenu()
-    var homeWindowController: HomeWindowController?
+    var homeWindowController: AuthenticationWindowController?
     @objc var kvDefaults = ScrimDefaults.shared
     var authKeyObserver: NSKeyValueObservation?
 
@@ -34,7 +34,7 @@ class ApplicationMenu: NSObject {
 
     func createMenu() -> NSMenu {
         aboutMenuItem = NSMenuItem(title: "About Scrim", action: #selector(about), keyEquivalent: "")
-        evalMenuItem = NSMenuItem(title: "Eval…", action: #selector(evalElisp), keyEquivalent: "")
+//        evalMenuItem = NSMenuItem(title: "Eval…", action: #selector(evalElisp), keyEquivalent: "")
         configureMenuItem = NSMenuItem(title: "Configure", action: #selector(configure), keyEquivalent: "")
         resetDefaultsMenuItem = NSMenuItem(title: "Reset", action: #selector(resetDefaults), keyEquivalent: "")
         quitMenuItem = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
@@ -44,15 +44,15 @@ class ApplicationMenu: NSObject {
             menu.addItem(aboutMenuItem)
         }
 
-        if let evalMenuItem {
-            evalMenuItem.target = self
-         //   evalMenuItem.view = ElispEntry()
-            menu.addItem(evalMenuItem)
-
-            if ScrimDefaults.shared.authKey == nil {
-                evalMenuItem.isHidden = true
-            }
-        }
+//        if let evalMenuItem {
+//            evalMenuItem.target = self
+//         //   evalMenuItem.view = ElispEntry()
+//            menu.addItem(evalMenuItem)
+//
+//            if ScrimDefaults.shared.authKey == nil {
+//                evalMenuItem.isHidden = true
+//            }
+//        }
 
 
         if let configureMenuItem {
@@ -115,8 +115,8 @@ class ApplicationMenu: NSObject {
             homeWindowController?.close()
         }
 
-        homeWindowController = HomeWindowController()
-        homeWindowController?.showWindow(nil)
+        homeWindowController = AuthenticationWindowController()
+        homeWindowController?.showWindow(self)
 
     }
 
