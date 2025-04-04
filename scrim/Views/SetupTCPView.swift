@@ -69,7 +69,7 @@ extension AuthenticationWorkflow {
             let srcText = [
               "For Scrim to work it must be setup as a TCP server.\n",
               ("In your Emacs initialization file, set the variable `server‑use‑tcp` to a " +
-                 "non-nil value.\n"),
+                 "non-nil value. (typically `t`)\n"),
               ("This can be done by using the command `M-x customize‑variable` to set the variable " +
                  "`server‑use‑tcp`.\n"),
               ("After completing the above, proceed to the next section " +

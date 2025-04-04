@@ -33,14 +33,24 @@ extension AuthenticationWorkflow {
                     .font(.largeTitle)
                     .multilineTextAlignment(.leading)
 
-                Text(genBodyText())
-                    .font(.system(size: 14))
-                    .multilineTextAlignment(.leading)
-                    .lineSpacing(CGFloat(2))
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-
                 if authButtonDisabled == true {
+                    Text(genBodyText())
+                        .font(.system(size: 14))
+                        .multilineTextAlignment(.leading)
+                        .lineSpacing(CGFloat(2))
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
+
+                    Text(verbatim: "$ open \"org-protocol://store-link?url=https://emacs.org&title=Emacs\"\n")
+                        .font(.custom("Menlo", size: 12))
+                        .textSelection(.enabled)
+                                            
                     Spacer()
+                } else {
+                    Text(genBodyText())
+                        .font(.system(size: 14))
+                        .multilineTextAlignment(.leading)
+                        .lineSpacing(CGFloat(2))
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
                 }
 
                 HStack {
@@ -101,8 +111,9 @@ extension AuthenticationWorkflow {
             if authButtonDisabled {
                 srcText = [
                     "**Success!**\n",
-                    ("**Scrim** is now setup to send `org-protocol` requests to Emacs. " +
-                       "Tap the Dismiss button below to close this window.")
+                    ("**Scrim** is now setup to relay `org-protocol` requests from other macOS apps to Emacs. " +
+                     "You can test your setup by copy and pasting the line below into the Terminal app " +
+                     "to store an Org link (in this case to emacs.org) to Emacs:\n")
                 ]
             } else {
                 srcText = [

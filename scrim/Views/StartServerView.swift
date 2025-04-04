@@ -33,7 +33,6 @@ extension AuthenticationWorkflow {
                     .textSelection(.enabled)
                     .multilineTextAlignment(.leading)
                     .lineSpacing(CGFloat(2))
-
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
 
 
