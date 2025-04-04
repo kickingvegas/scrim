@@ -17,21 +17,28 @@
 
 // © 2025 Charles Choi
 
-
 import Foundation
 import Network
 import OSLog
 import Darwin
 
-enum KvClientNetworking {
+enum ScrimNetworking {
 }
 
-extension KvClientNetworking {
-    fileprivate static let logger = Logger(subsystem: "com.yummymelon.emacsclient", category: "networking")
+extension ScrimNetworking {
+    fileprivate static let logger = Logger(subsystem: "com.yummymelon.scrim", category: "networking")
+    
+    enum EmacsClientError: Error {
+        case undefinedPortError
+        case undefinedHostError
+        case undefinedConnectionError
+        case sendError
+    }
 
     enum EmacsClientMessageType {
         case file
         case eval
+        case orgProtocol
     }
 
     @Observable
@@ -47,9 +54,9 @@ extension KvClientNetworking {
             logger.debug("Initializing emacsclient")
         }
 
-        public func configure(host: String, port: Int, authKey: String) {
+        public func configure(host: String, port: Int, authKey: String) throws {
             guard let portEndpoint = NWEndpoint.Port(port.description) else {
-                fatalError()
+                throw EmacsClientError.undefinedPortError
             }
 
             self.authKey = authKey
@@ -59,12 +66,12 @@ extension KvClientNetworking {
 
         /// Initialize connection with receiveHandler.
         /// - Parameter receiveHandler: completion handler for received messages from emacs server.
-        public func setup(_ receiveHandler: @escaping @Sendable (Result<String, Error>) -> Void) {
+        public func setup(_ receiveHandler: @escaping @Sendable (Result<String, Error>) -> Void) throws {
             guard let portEndpoint else {
-                fatalError()
+                throw EmacsClientError.undefinedPortError
             }
             guard let hostEndpoint else {
-                fatalError()
+                throw EmacsClientError.undefinedHostError
             }
 
             if connection == nil {
@@ -90,10 +97,9 @@ extension KvClientNetworking {
             }
         }
 
-
-        public func connect(_ readyHandler: @escaping @Sendable () -> Void) {
+        public func connect(_ readyHandler: @escaping @Sendable () -> Void) throws {
             guard let connection else {
-                fatalError()
+                throw EmacsClientError.undefinedConnectionError
             }
 
             if (connection.state == .setup) || (connection.state == .cancelled) {
@@ -104,6 +110,7 @@ extension KvClientNetworking {
 
                         if let authKey = self.authKey {
                             let authmessage = "-auth \(authKey)\n".data(using: .utf8)
+                            
                             connection.send(content: authmessage, completion: .contentProcessed({ sendError in
                                 if let sendError = sendError {
                                     logger.debug("Send error: \(sendError)")
@@ -144,27 +151,21 @@ extension KvClientNetworking {
             }
         }
 
-
         public func disconnect() {
             logger.debug("Disconnecting")
             self.connection?.cancel()
             self.connection = nil
         }
 
-
-        public func send(payload: String, messageType: EmacsClientMessageType = .file, completion: NWConnection.SendCompletion) {
-            var message: Data?
-            switch messageType {
-            case .eval:
-                message = "-eval \(quote(payload))\n".data(using: .utf8)
-            case .file:
-                message = "-file \(quote(payload))\n".data(using: .utf8)
-            }
-
+        public func send(payload: String,
+                         messageType: EmacsClientMessageType = .orgProtocol,
+                         completion: NWConnection.SendCompletion) {
+                       
             if let connection,
-               let message,
+               let message = wrapClientPayload(payload: payload, messageType: messageType),
+               let data = message.data(using: .utf8),
                connection.state == .ready {
-                connection.send(content: message, completion: completion)
+                connection.send(content: data, completion: completion)
             } else {
                 logger.error("Unable to send on connection.")
             }
@@ -177,7 +178,26 @@ extension KvClientNetworking {
                 .replacingOccurrences(of: "\n", with: "&n")
                 .replacingOccurrences(of: " ", with: "&_")
         }
-
-
+        
+        func wrapClientPayload(payload: String, messageType: EmacsClientMessageType) -> String? {
+            var message: String?
+            switch messageType {
+            case .eval:
+                message = "-eval \(quote(payload))\n"
+            case .file:
+                message = "-nowait -file \(quote(payload))\n"
+                
+            case .orgProtocol:
+                message = "-file \(quote(payload))\n"
+            }
+            
+            if let message {
+                // logger.debug("payload: \(payload)")
+                // logger.debug("wrapClientPayload: \(message)")
+                return message
+            } else {
+                return nil
+            }
+        }
     }
 }

@@ -23,7 +23,7 @@ import Cocoa
 class ApplicationMenu: NSObject {
     let menu = NSMenu()
     var homeWindowController: AuthenticationWindowController?
-    @objc var kvDefaults = ScrimDefaults.shared
+    @objc var scrimDefaults = ScrimDefaults.shared
     var authKeyObserver: NSKeyValueObservation?
 
     var aboutMenuItem: NSMenuItem?
@@ -91,7 +91,7 @@ class ApplicationMenu: NSObject {
             menu.addItem(quitMenuItem)
         }
 
-        authKeyObserver = observe(\.kvDefaults.authKey,
+        authKeyObserver = observe(\.scrimDefaults.authKey,
                                    options: [.old, .new]) { appMenu, change in
 
             DispatchQueue.main.async {
@@ -140,43 +140,43 @@ class ApplicationMenu: NSObject {
     }
 
     @objc func resetDefaults(sender: NSMenuItem) {
-        ScrimDefaults.shared.clearBookmark()
+        ScrimDefaults.shared.clearAuthBookmarkData()
     }
 
-    @objc func evalElisp(sender: NSMenuItem) {
-        let emacsClient = KvClientNetworking.EmacsClient.shared
-
-        let message = "(message \"hi there, hi.\")"
-
-        if emacsClient.connection == nil {
-            if let port = kvDefaults.port,
-               let host = kvDefaults.host,
-               let authKey = kvDefaults.authKey {
-
-                emacsClient.configure(host: host, port: port, authKey: authKey)
-                emacsClient.setup { result in
-                    switch result {
-                    case .success(_):
-                        print("Connected")
-                        emacsClient.disconnect()
-
-                    case .failure(let error):
-                        print("ERROR: \(error)")
-                    }
-                }
-            }
-        }
-
-        emacsClient.connect {
-            emacsClient.send(payload: message,
-                             messageType: .eval,
-                             completion: .contentProcessed({sendError in
-                if let sendError = sendError {
-                    print("Send error: \(sendError)")
-                } else {
-                    print("Sent command: \(message)")
-                }
-            }))
-        }
-    }
+//    @objc func evalElisp(sender: NSMenuItem) {
+//        let emacsClient = ScrimNetworking.EmacsClient.shared
+//
+//        let message = "(message \"hi there, hi.\")"
+//
+//        if emacsClient.connection == nil {
+//            if let port = scrimDefaults.port,
+//               let host = scrimDefaults.host,
+//               let authKey = scrimDefaults.authKey {
+//
+//                emacsClient.configure(host: host, port: port, authKey: authKey)
+//                emacsClient.setup { result in
+//                    switch result {
+//                    case .success(_):
+//                        print("Connected")
+//                        emacsClient.disconnect()
+//
+//                    case .failure(let error):
+//                        print("ERROR: \(error)")
+//                    }
+//                }
+//            }
+//        }
+//
+//        emacsClient.connect {
+//            emacsClient.send(payload: message,
+//                             messageType: .eval,
+//                             completion: .contentProcessed({sendError in
+//                if let sendError = sendError {
+//                    print("Send error: \(sendError)")
+//                } else {
+//                    print("Sent command: \(message)")
+//                }
+//            }))
+//        }
+//    }
 }

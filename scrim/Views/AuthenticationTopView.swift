@@ -72,40 +72,39 @@ extension AuthenticationWorkflow {
             NSApplication.shared.keyWindow?.close()
         }
 
-        private func openAuthFile() {
-            let kvDefaults = ScrimDefaults.shared
-            let emacsClient = KvClientNetworking.EmacsClient.shared
-
-            if let port = kvDefaults.port,
-               let host = kvDefaults.host,
-               let authKey = kvDefaults.authKey {
-
-                emacsClient.configure(host: host, port: port, authKey: authKey)
-                emacsClient.setup { result in
-                    switch result {
-                    case .success(_):
-                        emacsClient.disconnect()
-                    case .failure(let error):
-                        print("ERROR: \(error)")
-                    }
-                }
-
-                emacsClient.connect {
-                    emacsClient.send(payload: "(message \"oh dang\")",
-                                     messageType: .eval,
-                                     completion: .contentProcessed({ error in
-                        if let error {
-                            print("ERROR: \(error)")
-                        } else {
-                            print("opening hey.txt")
-                        }
-                    }))
-
-                }
-            } else {
-                print("ERROR: unable to connect")
-            }
-        }
+//        private func openAuthFile() {
+//            let emacsClient = ScrimNetworking.EmacsClient.shared
+//
+//            if let port = scrimDefaults.port,
+//               let host = scrimDefaults.host,
+//               let authKey = scrimDefaults.authKey {
+//
+//                emacsClient.configure(host: host, port: port, authKey: authKey)
+//                emacsClient.setup { result in
+//                    switch result {
+//                    case .success(_):
+//                        emacsClient.disconnect()
+//                    case .failure(let error):
+//                        print("ERROR: \(error)")
+//                    }
+//                }
+//
+//                emacsClient.connect {
+//                    emacsClient.send(payload: "(message \"oh dang\")",
+//                                     messageType: .eval,
+//                                     completion: .contentProcessed({ error in
+//                        if let error {
+//                            print("ERROR: \(error)")
+//                        } else {
+//                            print("opening hey.txt")
+//                        }
+//                    }))
+//
+//                }
+//            } else {
+//                print("ERROR: unable to connect")
+//            }
+//        }
      }
 }
 
