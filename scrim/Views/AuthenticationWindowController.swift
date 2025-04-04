@@ -34,7 +34,7 @@ class AuthenticationWindowController: NSWindowController {
         let hostingController = NSHostingController(rootView: authenticationTopView)
         let window = NSWindow(contentViewController: hostingController)
         window.styleMask = [.titled, .closable, .miniaturizable, .resizable]
-        window.title = "Scrim Setup"
+        window.title = "Setup Scrim"
         self.init(window: window)
     }
 }
