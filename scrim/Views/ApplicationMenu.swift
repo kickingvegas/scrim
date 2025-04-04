@@ -19,6 +19,7 @@
 
 import Cocoa
 
+@MainActor
 class ApplicationMenu: NSObject {
     let menu = NSMenu()
     var homeWindowController: AuthenticationWindowController?
@@ -82,19 +83,22 @@ class ApplicationMenu: NSObject {
         }
 
         authKeyObserver = observe(\.kvDefaults.authKey,
-                                   options: [.old, .new]) { objectSpecifier, change in
+                                   options: [.old, .new]) { appMenu, change in
 
-            if let newValue = change.newValue {
-                if newValue == nil {
-                    self.resetDefaultsMenuItem?.isHidden = true
-                    self.evalMenuItem?.isHidden = true
-                    self.configureMenuItem?.isHidden = false
-                } else {
-                    self.resetDefaultsMenuItem?.isHidden = false
-                    self.evalMenuItem?.isHidden = false
-                    self.configureMenuItem?.isHidden = true
+            DispatchQueue.main.async {
+                if let newValue = change.newValue {
+                    if newValue == nil {
+                        appMenu.resetDefaultsMenuItem?.isHidden = true
+                        appMenu.evalMenuItem?.isHidden = true
+                        appMenu.configureMenuItem?.isHidden = false
+                    } else {
+                        appMenu.resetDefaultsMenuItem?.isHidden = false
+                        appMenu.evalMenuItem?.isHidden = false
+                        appMenu.configureMenuItem?.isHidden = true
+                    }
                 }
             }
+            
 
         }
 
@@ -111,14 +115,15 @@ class ApplicationMenu: NSObject {
     }
 
     @objc func configure(sender: NSMenuItem) {
-        if homeWindowController != nil {
-            homeWindowController?.close()
+        if self.homeWindowController != nil {
+            self.homeWindowController?.close()
         }
-
-        homeWindowController = AuthenticationWindowController()
-        homeWindowController?.showWindow(self)
-
+        
+        self.homeWindowController = AuthenticationWindowController()
+        self.homeWindowController?.showWindow(self)
+        
     }
+
 
     @objc func resetDefaults(sender: NSMenuItem) {
         ScrimDefaults.shared.clearBookmark()

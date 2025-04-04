@@ -29,7 +29,7 @@ public class ScrimDefaults: NSObject {
 
     let logger = Logger(subsystem: "com.yummymelon.emacsclient", category: "userdefaults")
 
-    static let shared = ScrimDefaults()
+    @MainActor static let shared = ScrimDefaults()
 
     override init() {
         super.init()

@@ -35,8 +35,8 @@ extension KvClientNetworking {
     }
 
     @Observable
-    class EmacsClient {
-        static let shared = EmacsClient()
+    class EmacsClient: @unchecked Sendable {
+        @MainActor static let shared = EmacsClient()
 
         var connection : NWConnection?
         var hostEndpoint: NWEndpoint.Host?
@@ -59,7 +59,7 @@ extension KvClientNetworking {
 
         /// Initialize connection with receiveHandler.
         /// - Parameter receiveHandler: completion handler for received messages from emacs server.
-        public func setup(_ receiveHandler: @escaping (Result<String, Error>) -> Void) {
+        public func setup(_ receiveHandler: @escaping @Sendable (Result<String, Error>) -> Void) {
             guard let portEndpoint else {
                 fatalError()
             }
@@ -91,7 +91,7 @@ extension KvClientNetworking {
         }
 
 
-        public func connect(_ readyHandler: @escaping () -> Void) {
+        public func connect(_ readyHandler: @escaping @Sendable () -> Void) {
             guard let connection else {
                 fatalError()
             }

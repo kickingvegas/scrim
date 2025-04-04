@@ -21,7 +21,8 @@ import Foundation
 import AppKit
 import SwiftUI
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+
+class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var menu: ApplicationMenu?
     var didLaunch: Bool = false
@@ -30,8 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return false
     }
 
-
-
+    
     func application(_ application: NSApplication, open urls: [URL]) {
         let emacsClient = KvClientNetworking.EmacsClient.shared
         let kvDefaults = ScrimDefaults.shared
@@ -42,15 +42,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
            let url = urls.first {
 
             emacsClient.configure(host: host, port: port, authKey: authKey)
-            emacsClient.setup { result in
+            emacsClient.setup { [weak self] result in
                 switch result {
                 case .success(_):
                     emacsClient.disconnect()
                     // TODO: need to determine logic if app is already running to not call this.
-                    if self.didLaunch == false {
-                        application.terminate(self)
+                    if let self {
+                        if self.didLaunch == false {
+                            DispatchQueue.main.async {
+                                application.terminate(self)
+                            }
+                        }
                     }
-
                 case .failure(let error):
                     print("ERROR: \(error)")
                 }
