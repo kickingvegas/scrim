@@ -52,7 +52,7 @@ sync-development-with-main: checkout-main checkout-development
 	git merge main
 
 .PHONY: new-sprint
-new-sprint: SEMVER_BUMP:=$(shell python -m semver nextver $(SEMVER) prerelease)
+new-sprint: SEMVER_BUMP:=$(shell python -m semver nextver $(SEMVER) patch)
 new-sprint: sync-development-with-main bump-semver
 
 .PHONY: create-merge-development-branch
