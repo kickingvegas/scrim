@@ -30,21 +30,18 @@ class ApplicationMenu: NSObject {
     var configureMenuItem: NSMenuItem?
     var resetDefaultsMenuItem: NSMenuItem?
     var evalMenuItem: NSMenuItem?
+    var repoMenuItem: NSMenuItem?
     var quitMenuItem: NSMenuItem?
 
 
     func createMenu() -> NSMenu {
         aboutMenuItem = NSMenuItem(title: "About Scrim", action: #selector(about), keyEquivalent: "")
 //        evalMenuItem = NSMenuItem(title: "Eval…", action: #selector(evalElisp), keyEquivalent: "")
-        configureMenuItem = NSMenuItem(title: "Configure", action: #selector(configure), keyEquivalent: "")
+        configureMenuItem = NSMenuItem(title: "Setup", action: #selector(configure), keyEquivalent: "")
         resetDefaultsMenuItem = NSMenuItem(title: "Reset", action: #selector(resetDefaults), keyEquivalent: "")
-        quitMenuItem = NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: "q")
-
-        if let aboutMenuItem {
-            aboutMenuItem.target = self
-            menu.addItem(aboutMenuItem)
-        }
-
+        repoMenuItem = NSMenuItem(title:"Source", action: #selector(openRepo), keyEquivalent: "")
+        quitMenuItem = NSMenuItem(title: "Quit Scrim", action: #selector(quit), keyEquivalent: "q")
+ 
 //        if let evalMenuItem {
 //            evalMenuItem.target = self
 //         //   evalMenuItem.view = ElispEntry()
@@ -54,7 +51,12 @@ class ApplicationMenu: NSObject {
 //                evalMenuItem.isHidden = true
 //            }
 //        }
-
+        
+        if let aboutMenuItem {
+            aboutMenuItem.target = self
+            menu.addItem(aboutMenuItem)
+            menu.addItem(NSMenuItem.separator())
+        }
 
         if let configureMenuItem {
             configureMenuItem.target = self
@@ -72,6 +74,13 @@ class ApplicationMenu: NSObject {
             if ScrimDefaults.shared.authKey == nil {
                 resetDefaultsMenuItem.isHidden = true
             }
+        }
+                
+        
+        if let repoMenuItem {
+            menu.addItem(NSMenuItem.separator())
+            repoMenuItem.target = self
+            menu.addItem(repoMenuItem)
         }
 
 
@@ -121,9 +130,14 @@ class ApplicationMenu: NSObject {
         
         self.homeWindowController = AuthenticationWindowController()
         self.homeWindowController?.showWindow(self)
-        
     }
-
+    
+    @objc func openRepo(sender: NSMenuItem) {
+        let url = URL(string: "https://github.com/kickingvegas/scrim")
+        if let url {
+            NSWorkspace.shared.open(url)
+        }
+    }
 
     @objc func resetDefaults(sender: NSMenuItem) {
         ScrimDefaults.shared.clearBookmark()
