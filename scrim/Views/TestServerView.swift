@@ -71,11 +71,11 @@ extension AuthenticationWorkflow {
         func genBodyText() -> AttributedString {
             let srcText = [
               "Let's test your Emacs server setup by doing the following:\n",
-              "  1. Launch Emacs.",
-              "  2. Launch Terminal app.",
+              "  1. Relaunch Emacs to pick up the previous configuration changes.",
+              "  2. Launch the Terminal app.",
               ("  3. Run the following command from your home directory where\n" + "      `<user-emacs-directory>` is your Emacs initialization directory:\n\n" +
               "      `$ ls <user-emacs-directory>/server/server`\n"),
-              "If all goes well then the file `server` should be listed."
+              "If all goes well then the file named `server` should be listed."
             ]
 
             let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
