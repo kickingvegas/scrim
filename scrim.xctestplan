@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "14D07F21-8E1D-4497-BA03-579B9E50A91D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:scrim.xcodeproj",
+      "identifier" : "D9FFC2802D9B186C000DBD21",
+      "name" : "scrim"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:scrim.xcodeproj",
+        "identifier" : "D9FFC2932D9B186D000DBD21",
+        "name" : "scrimTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:scrim.xcodeproj",
+        "identifier" : "D9FFC29D2D9B186D000DBD21",
+        "name" : "scrimUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

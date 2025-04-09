@@ -20,33 +20,33 @@
 import Foundation
 import AppKit
 import SwiftUI
-
+import OSLog
 
 class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var menu: ApplicationMenu?
     var didLaunch: Bool = false
+    
+    fileprivate let logger = Logger(subsystem: "com.yummymelon.scrim", category: "app")
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return false
     }
 
-    
     func application(_ application: NSApplication, open urls: [URL]) {
-        let emacsClient = KvClientNetworking.EmacsClient.shared
-        let kvDefaults = ScrimDefaults.shared
+        let emacsClient = ScrimNetworking.EmacsClient.shared
+        let scrimDefaults = ScrimDefaults.shared
 
-        if let port = kvDefaults.port,
-           let host = kvDefaults.host,
-           let authKey = kvDefaults.authKey,
-           let url = urls.first {
-
-            emacsClient.configure(host: host, port: port, authKey: authKey)
-            emacsClient.setup { [weak self] result in
+        if let port = scrimDefaults.port,
+           let host = scrimDefaults.host,
+           let authKey = scrimDefaults.authKey,
+           let url = urls.first,
+           let components = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+            
+            let receiveHandler: @Sendable (Result<String, Error>) -> Void = { [weak self] result in
                 switch result {
                 case .success(_):
                     emacsClient.disconnect()
-                    // TODO: need to determine logic if app is already running to not call this.
                     if let self {
                         if self.didLaunch == false {
                             DispatchQueue.main.async {
@@ -55,22 +55,52 @@ class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
                         }
                     }
                 case .failure(let error):
-                    print("ERROR: \(error)")
+                    self?.logger.error("ERROR: \(error)")
                 }
             }
-
-            emacsClient.connect {
-                emacsClient.send(payload: url.absoluteString, completion: .contentProcessed({sendError in
-                    if let sendError = sendError {
-                        print("Send error: \(sendError)")
-                    } else {
-                        print("Org Protocol: \(url.absoluteString)")
+            
+            do {
+                switch components.scheme {
+                case "org-protocol":
+                    try emacsClient.configure(host: host, port: port, authKey: authKey)
+                    try emacsClient.setup(receiveHandler)
+                    try emacsClient.connect {
+                        emacsClient.send(payload: url.absoluteString, completion: .contentProcessed({sendError in
+                            if let sendError = sendError {
+                                self.logger.error("Send error: \(sendError)")
+                                
+                            } else {
+                                self.logger.debug("Org Protocol: \(url.absoluteString)")
+                            }
+                        }))
                     }
-                }))
+                    
+                case "scrim":
+                    if let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+                       let filename = ScrimUtils.scrimFile(components: components) {
+                        try emacsClient.configure(host: host, port: port, authKey: authKey)
+                        try emacsClient.setup(receiveHandler)
+                        try emacsClient.connect {
+                            emacsClient.send(payload: filename, messageType: .file, completion: .contentProcessed({sendError in
+                                if let sendError = sendError {
+                                    self.logger.error("Send error: \(sendError)")
+                                } else {
+                                    self.logger.debug("Filename: \(filename)")
+                                }
+                            }))
+                        }
+                    }
+                    
+                default:
+                    // THIS SHOULD NEVER HAPPEN.
+                    self.logger.error("unknown scheme \(String(describing: components.scheme))")
+                }
+                        
+            } catch {
+                self.logger.error("\(error)")
             }
-
         } else {
-            print("ERROR: unable to connect")
+            self.logger.error("ERROR: unable to connect")
         }
     }
 
@@ -89,7 +119,5 @@ class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
         if let menu = self.menu {
             statusBarItem.menu = menu.createMenu()
         }
-
-
     }
 }

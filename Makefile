@@ -86,6 +86,10 @@ create-gh-release: SEMVER_BUMP:=$(shell python -m semver nextver $(SEMVER) $(BUM
 create-gh-release: create-release-tag
 	gh release create --draft --title v$(SEMVER_BUMP) --generate-notes $(SEMVER_BUMP)
 
+.PHONY: test
+test:
+	xcodebuild test -scheme $(EXEC_NAME)
+
 .PHONY: status
 status:
 	git status

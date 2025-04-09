@@ -69,25 +69,13 @@ struct AuthFileButton: View {
                         showingAlert = true
                         return
                     }
-                    // access the directory URL
-                    // (read templates in the directory, make a bookmark, etc.)
-                    // onTemplatesDirectoryPicked(directory)
-                    // release access
-                    
-                    // print(file.absoluteString)
                     
                     do {
-                        let bd = try file.bookmarkData(
+                        let bookmarkData = try file.bookmarkData(
                             options: [.withSecurityScope]
                         )
-                        
-                        // print ("bookmark data created")
-                        /// Test code to inspect bd
-                        // var stale: Bool = false
-                        // let bURL = try URL(resolvingBookmarkData: bd, bookmarkDataIsStale: &stale)
-                        // print(bURL.absoluteString)
-                        
-                        scrimDefaults.setBookmark(bd)
+                        scrimDefaults.setAuthBookmarkData(bookmarkData)
+                        try scrimDefaults.parseAuthBookmarkData(bookmarkData)
                         
                     } catch {
                         alertMessage = "ERROR: can not create bookmark data."
@@ -95,17 +83,17 @@ struct AuthFileButton: View {
                         return
                     }
                     
-                    do {
-                        
-                        let data = try Data(contentsOf: file)
-                        if let buf = String(data: data, encoding: .utf8) {
-                            print(buf)
-                        }
-                        
-                    } catch {
-                        alertMessage = "ERROR: can not read shared secrete file."
-                        showingAlert = true
-                    }
+//                    do {
+//                        
+//                        let data = try Data(contentsOf: file)
+//                        if let buf = String(data: data, encoding: .utf8) {
+//                            print(buf)
+//                        }
+//                        
+//                    } catch {
+//                        alertMessage = "ERROR: can not read shared secret file."
+//                        showingAlert = true
+//                    }
                     
                     file.stopAccessingSecurityScopedResource()
                     authButtonDisabled = scrimDefaults.authKey != nil

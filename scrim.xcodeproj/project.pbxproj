@@ -24,12 +24,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D9552B1D2DA1F8A700B3AE5E /* scrim.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = scrim.xctestplan; sourceTree = "<group>"; };
 		D9FFC2812D9B186C000DBD21 /* Scrim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FFC2942D9B186D000DBD21 /* scrimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = scrimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FFC29E2D9B186D000DBD21 /* scrimUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = scrimUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D93588B82DA07F8900E1ECCB /* Exceptions for "scrim" folder in "scrimTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Services/EmacsClient.swift,
+				Services/ScrimDefaults.swift,
+				Services/ScrimUtils.swift,
+			);
+			target = D9FFC2932D9B186D000DBD21 /* scrimTests */;
+		};
 		D9FFC2E92D9B1AAD000DBD21 /* Exceptions for "scrim" folder in "scrim" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -45,6 +55,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				D9FFC2E92D9B1AAD000DBD21 /* Exceptions for "scrim" folder in "scrim" target */,
+				D93588B82DA07F8900E1ECCB /* Exceptions for "scrim" folder in "scrimTests" target */,
 			);
 			path = scrim;
 			sourceTree = "<group>";
@@ -89,6 +100,7 @@
 		D9FFC2782D9B186C000DBD21 = {
 			isa = PBXGroup;
 			children = (
+				D9552B1D2DA1F8A700B3AE5E /* scrim.xctestplan */,
 				D9FFC2832D9B186C000DBD21 /* scrim */,
 				D9FFC2972D9B186D000DBD21 /* scrimTests */,
 				D9FFC2A12D9B186D000DBD21 /* scrimUITests */,
@@ -485,7 +497,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/scrim.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/scrim";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrim.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scrim";
 			};
 			name = Debug;
 		};
@@ -503,7 +515,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/scrim.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/scrim";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scrim.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Scrim";
 			};
 			name = Release;
 		};

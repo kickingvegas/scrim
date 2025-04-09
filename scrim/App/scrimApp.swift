@@ -25,7 +25,7 @@ struct scrimApp: App {
 
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    var emacsClient = KvClientNetworking.EmacsClient.shared
+    var emacsClient = ScrimNetworking.EmacsClient.shared
     var kvDefaults = ScrimDefaults.shared
 
     var body: some Scene {
