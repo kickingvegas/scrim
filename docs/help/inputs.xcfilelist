@@ -1,0 +1,5 @@
+$(SRCROOT)/docs/help/ScrimUserGuide.org
+$(SRCROOT)/docs/help/Installation.org
+$(SRCROOT)/docs/help/OrgProtocol.org
+$(SRCROOT)/docs/help/ScrimProtocol.org
+$(SRCROOT)/docs/help/faq.org

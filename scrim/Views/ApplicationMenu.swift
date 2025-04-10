@@ -30,7 +30,7 @@ class ApplicationMenu: NSObject {
     var configureMenuItem: NSMenuItem?
     var resetDefaultsMenuItem: NSMenuItem?
     var feedbackMenuItem: NSMenuItem?
-    var repoMenuItem: NSMenuItem?
+    var helpMenuItem: NSMenuItem?
     var quitMenuItem: NSMenuItem?
 
 
@@ -39,7 +39,7 @@ class ApplicationMenu: NSObject {
         configureMenuItem = NSMenuItem(title: "Setup", action: #selector(configure), keyEquivalent: "")
         resetDefaultsMenuItem = NSMenuItem(title: "Reset", action: #selector(resetDefaults), keyEquivalent: "")
         feedbackMenuItem = NSMenuItem(title: "Feedback", action: #selector(openMailFeedback), keyEquivalent: "")
-        repoMenuItem = NSMenuItem(title:"Source", action: #selector(openRepo), keyEquivalent: "")
+        helpMenuItem = NSMenuItem(title:"Help", action: #selector(openHelp), keyEquivalent: "")
         quitMenuItem = NSMenuItem(title: "Quit Scrim", action: #selector(quit), keyEquivalent: "q")
  
         if let aboutMenuItem {
@@ -72,9 +72,9 @@ class ApplicationMenu: NSObject {
             menu.addItem(feedbackMenuItem)
         }
                 
-        if let repoMenuItem {
-            repoMenuItem.target = self
-            menu.addItem(repoMenuItem)
+        if let helpMenuItem {
+            helpMenuItem.target = self
+            menu.addItem(helpMenuItem)
         }
 
         if let quitMenuItem {
@@ -85,7 +85,6 @@ class ApplicationMenu: NSObject {
 
         authKeyObserver = observe(\.scrimDefaults.authKey,
                                    options: [.old, .new]) { appMenu, change in
-
             DispatchQueue.main.async {
                 if let newValue = change.newValue {
                     if newValue == nil {
@@ -97,13 +96,9 @@ class ApplicationMenu: NSObject {
                     }
                 }
             }
-            
-
         }
-
         return menu
     }
-
 
     @objc func about(sender: NSMenuItem) {
         NSApp.orderFrontStandardAboutPanel()
@@ -122,13 +117,6 @@ class ApplicationMenu: NSObject {
         self.homeWindowController?.showWindow(self)
     }
     
-    @objc func openRepo(sender: NSMenuItem) {
-        let url = URL(string: "https://github.com/kickingvegas/scrim")
-        if let url {
-            NSWorkspace.shared.open(url)
-        }
-    }
-        
     @objc func openMailFeedback(sender: NSMenuItem) {
         let datestamp = Date()
         var urlComponents = URLComponents()
@@ -148,6 +136,12 @@ class ApplicationMenu: NSObject {
         
         if let url = urlComponents.url {
             NSWorkspace.shared.open(url)
+        }
+    }
+    
+    @objc func openHelp(sender: NSMenuItem) {
+        if let bookName = Bundle.main.object(forInfoDictionaryKey: "CFBundleHelpBookName") as? String {
+            NSHelpManager.shared.openHelpAnchor("ScrimUserGuide", inBook: bookName)
         }
     }
 

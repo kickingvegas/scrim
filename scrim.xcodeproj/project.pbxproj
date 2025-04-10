@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D9AAEF402DA848EA00FC5F7D /* Scrim.help in Resources */ = {isa = PBXBuildFile; fileRef = D9AAEF3F2DA848EA00FC5F7D /* Scrim.help */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D9FFC2952D9B186D000DBD21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -25,6 +29,17 @@
 
 /* Begin PBXFileReference section */
 		D9552B1D2DA1F8A700B3AE5E /* scrim.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = scrim.xctestplan; sourceTree = "<group>"; };
+		D9AAEF3F2DA848EA00FC5F7D /* Scrim.help */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Scrim.help; sourceTree = "<group>"; };
+		D9AAEF7C2DA8563A00FC5F7D /* scrim-original_resize_128x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scrim-original_resize_128x.png"; sourceTree = "<group>"; };
+		D9AAEF7E2DA8563A00FC5F7D /* inputs.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = inputs.xcfilelist; sourceTree = "<group>"; };
+		D9AAEF7F2DA8563A00FC5F7D /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		D9AAEF802DA8563A00FC5F7D /* OrgProtocol.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = OrgProtocol.org; sourceTree = "<group>"; };
+		D9AAEF812DA8563A00FC5F7D /* outputs.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = outputs.xcfilelist; sourceTree = "<group>"; };
+		D9AAEF822DA8563A00FC5F7D /* publish-doc.el */ = {isa = PBXFileReference; lastKnownFileType = text; path = "publish-doc.el"; sourceTree = "<group>"; };
+		D9AAEF832DA8563A00FC5F7D /* ScrimUserGuide.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScrimUserGuide.org; sourceTree = "<group>"; };
+		D9AAEF842DA8563A00FC5F7D /* style1.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = style1.css; sourceTree = "<group>"; };
+		D9AAEF872DA8565600FC5F7D /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		D9AAEF882DA8565600FC5F7D /* README.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.org; sourceTree = "<group>"; };
 		D9FFC2812D9B186C000DBD21 /* Scrim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FFC2942D9B186D000DBD21 /* scrimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = scrimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FFC29E2D9B186D000DBD21 /* scrimUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = scrimUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,9 +112,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D9AAEF7D2DA8563A00FC5F7D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D9AAEF7C2DA8563A00FC5F7D /* scrim-original_resize_128x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		D9AAEF852DA8563A00FC5F7D /* help */ = {
+			isa = PBXGroup;
+			children = (
+				D9AAEF7D2DA8563A00FC5F7D /* images */,
+				D9AAEF7E2DA8563A00FC5F7D /* inputs.xcfilelist */,
+				D9AAEF7F2DA8563A00FC5F7D /* Makefile */,
+				D9AAEF802DA8563A00FC5F7D /* OrgProtocol.org */,
+				D9AAEF812DA8563A00FC5F7D /* outputs.xcfilelist */,
+				D9AAEF822DA8563A00FC5F7D /* publish-doc.el */,
+				D9AAEF832DA8563A00FC5F7D /* ScrimUserGuide.org */,
+				D9AAEF842DA8563A00FC5F7D /* style1.css */,
+			);
+			path = help;
+			sourceTree = "<group>";
+		};
+		D9AAEF862DA8563A00FC5F7D /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				D9AAEF852DA8563A00FC5F7D /* help */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
 		D9FFC2782D9B186C000DBD21 = {
 			isa = PBXGroup;
 			children = (
+				D9AAEF872DA8565600FC5F7D /* Makefile */,
+				D9AAEF882DA8565600FC5F7D /* README.org */,
+				D9AAEF862DA8563A00FC5F7D /* docs */,
+				D9AAEF3F2DA848EA00FC5F7D /* Scrim.help */,
 				D9552B1D2DA1F8A700B3AE5E /* scrim.xctestplan */,
 				D9FFC2832D9B186C000DBD21 /* scrim */,
 				D9FFC2972D9B186D000DBD21 /* scrimTests */,
@@ -238,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9AAEF402DA848EA00FC5F7D /* Scrim.help in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

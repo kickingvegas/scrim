@@ -89,6 +89,15 @@ create-gh-release: create-release-tag
 test:
 	xcodebuild test -scheme $(EXEC_NAME)
 
+
+.PHONY: create-helpbook
+create-helpbook:
+	make -C docs/help $@
+
+.PHONY: clean-helpbook
+clean-helpbook:
+	make -C docs/help $@
+
 .PHONY: status
 status:
 	git status
