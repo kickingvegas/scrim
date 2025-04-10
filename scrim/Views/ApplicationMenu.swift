@@ -29,29 +29,19 @@ class ApplicationMenu: NSObject {
     var aboutMenuItem: NSMenuItem?
     var configureMenuItem: NSMenuItem?
     var resetDefaultsMenuItem: NSMenuItem?
-    var evalMenuItem: NSMenuItem?
+    var feedbackMenuItem: NSMenuItem?
     var repoMenuItem: NSMenuItem?
     var quitMenuItem: NSMenuItem?
 
 
     func createMenu() -> NSMenu {
         aboutMenuItem = NSMenuItem(title: "About Scrim", action: #selector(about), keyEquivalent: "")
-//        evalMenuItem = NSMenuItem(title: "Eval…", action: #selector(evalElisp), keyEquivalent: "")
         configureMenuItem = NSMenuItem(title: "Setup", action: #selector(configure), keyEquivalent: "")
         resetDefaultsMenuItem = NSMenuItem(title: "Reset", action: #selector(resetDefaults), keyEquivalent: "")
+        feedbackMenuItem = NSMenuItem(title: "Feedback", action: #selector(openMailFeedback), keyEquivalent: "")
         repoMenuItem = NSMenuItem(title:"Source", action: #selector(openRepo), keyEquivalent: "")
         quitMenuItem = NSMenuItem(title: "Quit Scrim", action: #selector(quit), keyEquivalent: "q")
  
-//        if let evalMenuItem {
-//            evalMenuItem.target = self
-//         //   evalMenuItem.view = ElispEntry()
-//            menu.addItem(evalMenuItem)
-//
-//            if ScrimDefaults.shared.authKey == nil {
-//                evalMenuItem.isHidden = true
-//            }
-//        }
-        
         if let aboutMenuItem {
             aboutMenuItem.target = self
             menu.addItem(aboutMenuItem)
@@ -75,15 +65,17 @@ class ApplicationMenu: NSObject {
                 resetDefaultsMenuItem.isHidden = true
             }
         }
-                
         
-        if let repoMenuItem {
+        if let feedbackMenuItem {
             menu.addItem(NSMenuItem.separator())
+            feedbackMenuItem.target = self
+            menu.addItem(feedbackMenuItem)
+        }
+                
+        if let repoMenuItem {
             repoMenuItem.target = self
             menu.addItem(repoMenuItem)
         }
-
-
 
         if let quitMenuItem {
             menu.addItem(NSMenuItem.separator())
@@ -98,11 +90,9 @@ class ApplicationMenu: NSObject {
                 if let newValue = change.newValue {
                     if newValue == nil {
                         appMenu.resetDefaultsMenuItem?.isHidden = true
-                        appMenu.evalMenuItem?.isHidden = true
                         appMenu.configureMenuItem?.isHidden = false
                     } else {
                         appMenu.resetDefaultsMenuItem?.isHidden = false
-                        appMenu.evalMenuItem?.isHidden = false
                         appMenu.configureMenuItem?.isHidden = true
                     }
                 }
@@ -138,45 +128,30 @@ class ApplicationMenu: NSObject {
             NSWorkspace.shared.open(url)
         }
     }
+        
+    @objc func openMailFeedback(sender: NSMenuItem) {
+        let datestamp = Date()
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "mailto"
+        urlComponents.path = "kickingvegas@gmail.com"
+        
+        var queryItems: [URLQueryItem] = []
+        
+        queryItems.append(URLQueryItem(name: "subject", value: "Scrim Feedback: \(datestamp)"))
+        queryItems.append(URLQueryItem(name: "body",
+                                       value: ("# Title\n\n"
+                                               + "# Description\n\n"
+                                               + "# Step to Reproduce\n\n"
+                                               + "# Expected Result\n\n"
+                                               + "# Actual Result\n\n")))
+        urlComponents.queryItems = queryItems
+        
+        if let url = urlComponents.url {
+            NSWorkspace.shared.open(url)
+        }
+    }
 
     @objc func resetDefaults(sender: NSMenuItem) {
         ScrimDefaults.shared.clearAuthBookmarkData()
     }
-
-//    @objc func evalElisp(sender: NSMenuItem) {
-//        let emacsClient = ScrimNetworking.EmacsClient.shared
-//
-//        let message = "(message \"hi there, hi.\")"
-//
-//        if emacsClient.connection == nil {
-//            if let port = scrimDefaults.port,
-//               let host = scrimDefaults.host,
-//               let authKey = scrimDefaults.authKey {
-//
-//                emacsClient.configure(host: host, port: port, authKey: authKey)
-//                emacsClient.setup { result in
-//                    switch result {
-//                    case .success(_):
-//                        print("Connected")
-//                        emacsClient.disconnect()
-//
-//                    case .failure(let error):
-//                        print("ERROR: \(error)")
-//                    }
-//                }
-//            }
-//        }
-//
-//        emacsClient.connect {
-//            emacsClient.send(payload: message,
-//                             messageType: .eval,
-//                             completion: .contentProcessed({sendError in
-//                if let sendError = sendError {
-//                    print("Send error: \(sendError)")
-//                } else {
-//                    print("Sent command: \(message)")
-//                }
-//            }))
-//        }
-//    }
 }
