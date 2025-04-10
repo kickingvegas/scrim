@@ -16,10 +16,9 @@ SEMVER_BUMP := $(shell python -m semver bump $(BUMP_LEVEL) $(SEMVER))
 NEXT_BUILD = $(shell echo "$(BUILD_NUMBER) + 1" | bc)
 VERSION = "$(SEMVER) ($(BUILD_NUMBER))"
 
-.PHONY: go
-go:
+.PHONY: version
+version:
 	echo $(VERSION)
-	echo $(NEXT_BUILD)
 
 .PHONY: bump-build
 bump-build:
