@@ -23,12 +23,12 @@ enum ScrimUtils {
 }
 
 extension ScrimUtils {
-    static public func scrimFile(components: URLComponents) -> String? {
+    static public func findFirstQueryItem(components: URLComponents, key: String="file") -> String? {
         guard let queryItems = components.queryItems else {
             return nil
         }
 
-        let filteredItems = queryItems.filter { $0.name == "file" }
+        let filteredItems = queryItems.filter { $0.name ==  key}
             
         if filteredItems.count > 0 {
             let firstItem = filteredItems[0]
@@ -37,6 +37,8 @@ extension ScrimUtils {
             return nil
         }
     }
+        
+    
     
     static public func scrimIsFrame(components: URLComponents) -> Bool {
         guard let queryItems = components.queryItems else {
