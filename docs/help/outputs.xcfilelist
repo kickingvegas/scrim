@@ -1,0 +1,6 @@
+$(SRCROOT)/Contents/Resources/en.lproj/ScrimUserGuide.html
+$(SRCROOT)/Contents/Resources/en.lproj/Installation.html
+$(SRCROOT)/Contents/Resources/en.lproj/OrgProtocol.html
+$(SRCROOT)/Contents/Resources/en.lproj/ScrimProtocol.html
+$(SRCROOT)/Contents/Resources/en.lproj/faqProtocol.html
+

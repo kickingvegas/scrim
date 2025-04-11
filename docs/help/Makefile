@@ -1,0 +1,44 @@
+##
+# Copyright © 2023 Charles Choi
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+EMACS_ELPA_DIR=$(HOME)/.config/emacs/elpa
+EMACS=$(EMACS_APP_EXEC)
+PACKAGE_PATHS=-L $(EMACS_ELPA_DIR)/htmlize-current
+
+TARGET_DIR=../../Scrim.help/Contents/Resources/en.lproj
+
+$(TARGET_DIR):
+	mkdir -p $@
+
+.PHONY: create-helpbook
+create-helpbook: clean-helpbook build-helpbook indexes
+
+.PHONY: indexes
+indexes: $(TARGET_DIR)
+	cd $(TARGET_DIR);hiutil -I lsm -Caf Scrim.helpindex -vv .
+	cd $(TARGET_DIR);hiutil -I corespotlight -Caf Scrim.cshelpindex -vv .
+
+.PHONY: build-helpbook
+build-helpbook:
+	$(EMACS) -batch $(PACKAGE_PATHS) -l publish-doc.el --eval '(org-publish "scrim-help-book" t)'
+
+.PHONY: open-helpbook
+open-helpbook: $(TARGET_DIR)
+	open $(TARGET_DIR)/ScrimUserGuide.html
+
+.PHONY: clean-helpbook
+clean-helpbook: $(TARGET_DIR)
+	/bin/rm -rf $(TARGET_DIR)/*

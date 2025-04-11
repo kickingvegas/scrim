@@ -20,5 +20,5 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-CURRENT_PROJECT_VERSION = 6
+CURRENT_PROJECT_VERSION = 7
 MARKETING_VERSION = 0.2.0

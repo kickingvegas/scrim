@@ -1,0 +1,58 @@
+# Copyright © 2025 Charles Choi
+#
+#+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
+#+HTML_HEAD: <meta name="keywords" content="emacs, scrim protocol, info, open"/>
+#+HTML_HEAD: <meta name="description" content="Scrim Protocol"/>
+#+HTML_HEAD: <meta name="robots" content="index, anchors"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
+#+HTML: <a name="ScrimProtocol"></a>
+* Scrim Protocol
+
+*Scrim* offers a custom URL scheme ~scrim://~ to permit other apps to affect the following in Emacs:
+
+- Open a file or directory
+- Open a Info page (node)
+- Open a man page
+- Describe a function or command
+
+* Scrim Protocol Specification
+
+The following table describes the top-level ~scheme~ and ~host~ components for the Scrim Protocol. The ~host~ component is used to specify sub-protocols which map to different commands to send to Emacs.
+
+| URL Component | Value      | Description                        |
+|---------------+------------+------------------------------------|
+| scheme        | scrim      | Custom URL scheme for Org Protocol |
+| host          | open, info | Sub-protocols                      |
+
+
+** Open (~open~) Sub-Protocol
+
+If the ~host~ component is set to ~open~, then the following query item parameters are supported.
+
+| Parameter | Type   | Description                                                                   |
+|-----------+--------+-------------------------------------------------------------------------------|
+| file      | String | File or directory to open in Emacs. This can be an absolute or relative path. |
+
+An example of this sub-protocol in action is shown below:
+
+#+begin_example
+  scrim://open?file=~/.bashrc
+#+end_example
+
+Note that value of ~file~ must be [[https://en.wikipedia.org/wiki/Percent-encoding][URL encoded]] to support spaces.
+
+** Info (~info~) Sub-Protocol
+
+If the ~host~ component is set to ~info~, then the following query item parameters are supported.
+
+| Parameter | Type   | Description                 |
+|-----------+--------+-----------------------------|
+| node      | String | Info node to open in Emacs. |
+
+An example of this sub-protocol in action is shown below:
+
+#+begin_example
+  scrim://info?node=%28org%29%20Protocols
+#+end_example
+
+Note that the value of ~node~ must be [[https://en.wikipedia.org/wiki/Percent-encoding][URL encoded]].

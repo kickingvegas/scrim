@@ -2,6 +2,9 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+## Ignore Generated Help Documentation
+Scrim.help/Contents/Resources/
+
 ## User settings
 xcuserdata/
 

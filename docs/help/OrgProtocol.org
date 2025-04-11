@@ -1,0 +1,62 @@
+# Copyright © 2025 Charles Choi
+#
+#+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
+#+HTML_HEAD: <meta name="keywords" content="emacs, org protocol, capturing, org mode, org"/>
+#+HTML_HEAD: <meta name="description" content="Org Protocol"/>
+#+HTML_HEAD: <meta name="robots" content="index, anchors"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
+#+HTML: <a name="OrgProtocol"></a>
+* Org Protocol
+
+Emacs Org mode provides a means of triggering actions via a custom URL scheme called /Org Protocol/. This URL scheme is ~org‑protocol://~. With this URL scheme, 3^{rd} party apps are able to call this without violating their default sandbox policy.
+
+* Org Protocol URL Specification
+
+| URL Component | Value                            | Description                        |
+|---------------+----------------------------------+------------------------------------|
+| scheme        | org-protocol                     | Custom URL scheme for Org Protocol |
+| host          | store-link, capture, open-source | Sub-protocols                      |
+
+** Store Link (~store-link~) Sub-Protocol
+
+If the ~host~ component is set to ~store-link~ then the following query item parameters are supported.
+
+| Parameter | Type   | Description             |
+|-----------+--------+-------------------------|
+| url       | URL    | URL link.               |
+| title     | string | Logical title for link. |
+
+An example of this sub-protocol in action is shown below:
+
+#+begin_example
+  org-protocol://store-link?url=emacs.org&title=Emacs
+#+end_example
+
+** Capture (~capture~) Sub-Protocol
+
+The ~capture~ sub-protocol allows quickly storing a note which can include a URL link. The table below shows what query item parameters are supported:
+
+| Parameter | Type   | Description                   |
+|-----------+--------+-------------------------------|
+| url       | URL    | URL link.                     |
+| title     | string | Logical title for link.       |
+| template  | string | Capture template key.         |
+| body      | string | Note text to send to payload. |
+
+In the Emacs initialization, one can define a [[https://orgmode.org/manual/Capture-templates.html][capture template]] with the following placeholders to fill from the parameters listed above.
+
+| Placeholder   | URL Parameter                                          |
+|---------------+--------------------------------------------------------|
+| %:link        | url                                                    |
+| %:description | title                                                  |
+| %:i           | body                                                   |
+| %:annotation  | Equivalent to Org link constructed from url and title. |
+
+Capture templates are a powerful feature of Org, allowing for rich import of data.
+
+* References
+- [[https://orgmode.org/manual/Protocols.html][Protocols (The Org Manual)]]
+- [[https://orgmode.org/manual/Capture-templates.html][Capture templates (The Org Manual)]]
+
+
+  
