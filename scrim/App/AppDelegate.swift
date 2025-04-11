@@ -76,21 +76,40 @@ class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
                     }
                     
                 case "scrim":
-                    if let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
-                       let filename = ScrimUtils.scrimFile(components: components) {
-                        try emacsClient.configure(host: host, port: port, authKey: authKey)
-                        try emacsClient.setup(receiveHandler)
-                        try emacsClient.connect {
-                            emacsClient.send(payload: filename, messageType: .file, completion: .contentProcessed({sendError in
-                                if let sendError = sendError {
-                                    self.logger.error("Send error: \(sendError)")
-                                } else {
-                                    self.logger.debug("Filename: \(filename)")
-                                }
-                            }))
+                    if ["emacs", "open"].contains(components.host) {
+                        if let filename = ScrimUtils.findFirstQueryItem(components: components, key: "file") {
+                            try emacsClient.configure(host: host, port: port, authKey: authKey)
+                            try emacsClient.setup(receiveHandler)
+                            try emacsClient.connect {
+                                emacsClient.send(payload: filename, messageType: .file, completion: .contentProcessed({sendError in
+                                    if let sendError = sendError {
+                                        self.logger.error("Send error: \(sendError)")
+                                    } else {
+                                        self.logger.debug("Filename: \(filename)")
+                                    }
+                                }))
+                            }
                         }
+                    } else if components.host == "info" {
+                        if let node = ScrimUtils.findFirstQueryItem(components: components, key: "node") {
+                            try emacsClient.configure(host: host, port: port, authKey: authKey)
+                            try emacsClient.setup(receiveHandler)
+                            try emacsClient.connect {
+                                let infoMessage = "(info \"\(node)\")"
+                                emacsClient.send(payload: infoMessage, messageType: .eval, completion: .contentProcessed({sendError in
+                                    if let sendError = sendError {
+                                        self.logger.error("Send error: \(sendError)")
+                                    } else {
+                                        self.logger.debug("Info node: \(node)")
+                                    }
+                                }))
+                            }
+                        }
+                        
+                    } else {
+                        self.logger.error("unknown host/sub-protocol \(String(describing: components.host))")
                     }
-                    
+
                 default:
                     // THIS SHOULD NEVER HAPPEN.
                     self.logger.error("unknown scheme \(String(describing: components.scheme))")

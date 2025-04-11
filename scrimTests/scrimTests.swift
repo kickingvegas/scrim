@@ -71,25 +71,50 @@ struct ScrimTests {
         @Test(arguments: [
             ("scrim://emacs?file=mary.txt", "mary.txt"),
             ("scrim://emacs?file=~/fred.txt", "~/fred.txt"),
-            ("scrim://emacs?frame=1&file=~/fred.txt&file=jane.txt", "~/fred.txt")
+            ("scrim://emacs?frame=1&file=~/fred.txt&file=jane.txt", "~/fred.txt"),
+            ("scrim://open?file=mary.txt", "mary.txt"),
+            ("scrim://open?file=~/fred.txt", "~/fred.txt"),
+            ("scrim://open?frame=1&file=~/fred.txt&file=jane.txt", "~/fred.txt"),
+            ("scrim://open?file=~/hey%20you.txt&file=jane.txt", "~/hey you.txt"),
+            ("scrim://open?file=~/what the.txt&file=jane.txt", "~/what the.txt"),
         ])
-        func scrimFile(testValues: (String, String)) async throws {
+        func scrimProtocolOpen(testValues: (String, String)) async throws {
             let input = testValues.0
             let control = testValues.1
             
             if let components = URLComponents(string: input) {
-                guard components.host == "emacs" else {
+                guard ["emacs", "open"].contains(components.host) else {
                     #expect(Bool(false))
                     return
                 }
                 
-                if let result = ScrimUtils.scrimFile(components: components) {
+                if let result = ScrimUtils.findFirstQueryItem(components: components, key: "file") {
                     #expect(result == control)
                 }
             }
         }
         
-        
+        @Test(arguments: [
+            ("scrim://info?node=%28org%29%20Protocols",  "(org) Protocols"),
+            ("scrim://info?node=(org) Protocols", "(org) Protocols"),
+            ("scrim://info?node=(eshell) Control Flow",  "(eshell) Control Flow")
+        ])
+        func scrimProtocolInfo(testValues: (String, String)) async throws {
+            let input = testValues.0
+            let control = testValues.1
+            
+            if let components = URLComponents(string: input) {
+                guard components.host == "info" else {
+                    #expect(Bool(false))
+                    return
+                }
+                
+                if let result = ScrimUtils.findFirstQueryItem(components: components, key: "node") {
+                    #expect(result == control)
+                }
+            }
+        }
+                
         @Test(arguments: [
             ("scrim://emacs?file=mary.txt", false),
             ("scrim://emacs?file=~/fred.txt", false),

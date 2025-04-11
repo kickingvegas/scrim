@@ -11,6 +11,7 @@ While *Scrim* can work with any program that is capable of generating an ~org‑
 - Send links and text clippings to an Emacs Org file via [[https://orgmode.org/manual/Protocols.html][Org Protocol]].
 - Open or create files on your local file system in Emacs via the ~scrim://~ custom URL scheme.
 - Open Emacs Info pages (nodes) via the ~scrim://~ custom URL scheme.
+  - More info on the [[file:docs/help/ScrimProtocol.org][Scrim Protocol]].
   
 * Requirements
 - macOS 15.x (Sequoia)
@@ -22,7 +23,6 @@ While *Scrim* can work with any program that is capable of generating an ~org‑
 
 * Mac App Store
 *Scrim* is available on the Mac App Store. (TBD)
-
 
 * License
 *Scrim* is GPLv3 licensed. 

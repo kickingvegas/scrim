@@ -33,13 +33,20 @@ If the ~host~ component is set to ~open~, then the following query item paramete
 |-----------+--------+-------------------------------------------------------------------------------|
 | file      | String | File or directory to open in Emacs. This can be an absolute or relative path. |
 
+Only the first instance of ~file~ (reading from left to right) is processed in the URL if there is more than one.
+
 An example of this sub-protocol in action is shown below:
 
 #+begin_example
   scrim://open?file=~/.bashrc
 #+end_example
 
-Note that value of ~file~ must be [[https://en.wikipedia.org/wiki/Percent-encoding][URL encoded]] to support spaces.
+Note that value of ~file~ must be [[https://en.wikipedia.org/wiki/Percent-encoding][URL encoded]] to support spaces if the URL is to be treated without escaping. That said, the macOS ~open~ command-line tool can handle un-encoded spaces fine.
+
+#+begin_example
+  $ open "scrim://open?file=~/hey there.txt"
+#+end_example
+
 
 ** Info (~info~) Sub-Protocol
 
@@ -49,10 +56,18 @@ If the ~host~ component is set to ~info~, then the following query item paramete
 |-----------+--------+-----------------------------|
 | node      | String | Info node to open in Emacs. |
 
+Only the first instance of ~node~ (reading from left to right) is processed in the URL if there is more than one.
+
 An example of this sub-protocol in action is shown below:
 
 #+begin_example
   scrim://info?node=%28org%29%20Protocols
 #+end_example
 
-Note that the value of ~node~ must be [[https://en.wikipedia.org/wiki/Percent-encoding][URL encoded]].
+Note that the value of ~node~ must be [[https://en.wikipedia.org/wiki/Percent-encoding][URL encoded]] if the URL is to be treated without escaping. That said, the macOS ~open~ command-line tool can handle un-encoded values of ~node~ as demonstrated below.
+
+#+begin_example
+  $ open "scrim://info?node=(org) Protocols"
+#+end_example
+
+
