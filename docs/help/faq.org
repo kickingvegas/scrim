@@ -1,0 +1,28 @@
+# Copyright © 2025 Charles Choi
+#
+#+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
+#+HTML_HEAD: <meta name="keywords" content="faq"/>
+#+HTML_HEAD: <meta name="description" content="Scrim Frequently Asked Questions"/>
+#+HTML_HEAD: <meta name="robots" content="index, anchors"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
+#+HTML: <a name="FrequentlyAskedQuestions"></a>
+* Frequently Asked Questions
+
+** Why can't I have an app call emacsclient?
+
+macOS apps are packaged so that they are by default not permitted to access other programs outside of their respective sandboxes. While an app can have its default security restrictions lifted, this makes it vulnerable to an attack which is not desirable.
+
+
+** Why setup TCP Server?
+
+By default the Emacs /server/ is configured to use a Unix domain socket which relies on the operating system kernel as the means of transport. Recent releases of macOS (as early as Ventura 13) have now banned this practice across different code-signed apps.
+
+Current macOS practice is to use a TCP socket to enable IPC across different code-signed apps.
+
+** Why must the user select the shared secret file?
+
+The Emacs server TCP socket communication design presumes that both the server and the client have access to the same file system. From this Emacs server generates a runtime shared secret file that the client must read to obtain an authentication key to transmit to the server via the TCP socket. 
+
+This shared secret file is however outside of the sandbox for the *Scrim* app. Files outside an app's sandbox are by default not accessible to it. To get permission to access it, the user must manually select the shared secret file from the macOS file dialog. This is a “one-time” operation as the app can remember this shared secret file on subsequent runs of *Scrim*.
+
+Note that resetting or deleting the *Scrim* app will lose this memory and the user will have to again select the shared secret file.

@@ -1,0 +1,52 @@
+# Copyright © 2025 Charles Choi
+#
+#+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
+#+HTML_HEAD: <meta name="keywords" content="scrim, home, index"/>
+#+HTML_HEAD: <meta name="description" content="Scrim User Guide"/>
+#+HTML_HEAD: <meta name="robots" content="index, anchors"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
+#+HTML: <a name="ScrimUserGuide"></a>
+* Scrim User Guide
+
+#+ATTR_HTML: :align left
+[[file:images/scrim-original_resize_128x.png]]
+*Scrim* is an [[file:OrgProtocol.org::*Org Protocol][Org Protocol]] proxy for Emacs on macOS.
+
+With *Scrim*, 3^{rd} party native apps can send links and text clippings to an Emacs Org file by simply opening a custom URL scheme (~org‑protocol://~).
+
+*Scrim* is a native app that is designed to work with the security policies of macOS. No workarounds that involve relaxing security policy is required.
+
+While *Scrim* can work with any program that is capable of generating an ~org‑protocol://~ request, it is intended to work in tandem with [[https://apps.apple.com/us/app/captee/id6446053750][Captee]], a utility to share links and text clippings from the macOS Share Menu, which many native macOS apps support.
+
+* Features
+- Send links and text clippings to an Emacs Org file via [[https://orgmode.org/manual/Protocols.html][Org Protocol]].
+- Open or create files on your local file system in Emacs via the ~scrim://~ custom URL scheme.
+- Open Emacs Info pages (nodes) via the ~scrim://~ custom URL scheme.
+  
+* Requirements
+- macOS 15.x (Sequoia)
+- *Scrim* is designed to work directly with the GNU Free Software Foundation version of Emacs 29.4+.
+  - The [[https://bitbucket.org/mituharu/emacs-mac/src/master/][Mitsuharu Yamamoto fork (aka Emacs Mac App)]] has been modified to natively support ~org‑protocol://~. If you use this, you do not need *Scrim*.
+- Your local setup of Emacs must run /server/ to support ~org‑protocol://~.
+  - In addition, /server/ must be setup to use a TCP socket.
+
+* Table of Contents
+- [[file:Installation.org][Installation]]
+- [[file:OrgProtocol.org][Org Protocol]]
+- [[file:ScrimProtocol.org][Scrim Protocol]]
+- [[file:faq.org][Frequently Asked Questions]]
+  
+* Let others know about Scrim
+Please rate and review *Scrim* on the App Store.
+
+* License & Source
+*Scrim* is GPLv3 licensed. The source for this program is located at https://github.com/kickingvegas/scrim.
+
+* Acknowledgments
+Much appreciation to the Org and Emacs development teams whose towering efforts this work builds upon.
+
+Personal thanks goes out to:
+- Mark Rowe and Helge Heß for improving my understanding of macOS security policy which was instrumental to implementing Scrim.
+- ~wasamasa~ for their design notes on the /emacsclient/ protocol.
+
+
