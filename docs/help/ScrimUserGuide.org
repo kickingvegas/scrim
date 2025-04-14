@@ -46,7 +46,7 @@ Please rate and review *Scrim* on the App Store.
 Much appreciation to the Org and Emacs development teams whose towering efforts this work builds upon.
 
 Personal thanks goes out to:
-- Mark Rowe and Helge Heß for improving my understanding of macOS security policy which was instrumental to implementing Scrim.
+- Mark Rowe and Helge Heß for improving my understanding of macOS security policy which was instrumental to implementing *Scrim*.
 - ~wasamasa~ for their design notes on the /emacsclient/ protocol.
 
 
