@@ -103,24 +103,5 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
-      <PreActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;# echo &quot;hey there\n&quot; &gt; $PROJECT_DIR/heythere.txt&#10;# which ls &gt;&gt; $PROJECT_DIR/heythere.txt&#10;# which make &gt;&gt; $PROJECT_DIR/heythere.txt&#10;make -C $PROJECT_DIR create-helpbook&#10;"
-               shellToInvoke = "/opt/local/bin/bash --login">
-               <EnvironmentBuildable>
-                  <BuildableReference
-                     BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "D9FFC2802D9B186C000DBD21"
-                     BuildableName = "Scrim.app"
-                     BlueprintName = "scrim"
-                     ReferencedContainer = "container:scrim.xcodeproj">
-                  </BuildableReference>
-               </EnvironmentBuildable>
-            </ActionContent>
-         </ExecutionAction>
-      </PreActions>
    </ArchiveAction>
 </Scheme>
