@@ -41,13 +41,13 @@ extension AuthenticationWorkflow {
 
                 HStack {
                     Button(action: setupScrim) {
-                        Label("Setup Scrim", systemImage: "gearshape")
+                        Label("My Emacs server is setup for TCP", systemImage: "gearshape")
                             .font(.title2)
                             .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                     }
 
                     Button(action:setupTCP) {
-                        Label("Setup Emacs Server", systemImage: "network")
+                        Label("My Emacs server is not setup", systemImage: "network")
                             .font(.title2)
                             .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                     }
@@ -68,12 +68,12 @@ extension AuthenticationWorkflow {
 
         func genBodyText() -> AttributedString {
             let srcText = [
-              ("For **Scrim** to work you must setup Emacs server to use a TCP socket " +
+              ("For **Scrim** to work, Emacs server must be setup to use a TCP socket " +
                "and to have the `org‑protocol` package loaded.\n"),
-              ("Native macOS apps require TCP socket access to connect to Emacs server due to " +
-                 "OS security policy restrictions.\n"),
-              ("If your Emacs server is already setup for TCP, please click on the “Setup Scrim” button below. "
-               + "Otherwise the following instructions will guide you to setup Emacs server to work with **Scrim**.\n")
+              ("**Scrim** requires TCP socket access due to " +
+                 "macOS security policy restrictions.\n"),
+              ("If your Emacs server is already setup for TCP, please click on the “My Emacs server is setup for TCP” button below. "
+               + "Otherwise click on “My Emacs server is not setup”.")
             ]
 
             let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
@@ -86,5 +86,5 @@ extension AuthenticationWorkflow {
 
 #Preview {
     @Previewable @State var workflowState: AuthenticationWorkflow.AuthenticationWorkflowState = .welcome
-    AuthenticationWorkflow.WelcomeView(workflowState: $workflowState)
+    AuthenticationWorkflow.WelcomeView(workflowState: $workflowState).frame(width: 800, height: 412)
 }

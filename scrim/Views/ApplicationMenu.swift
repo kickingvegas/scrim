@@ -19,6 +19,8 @@
 
 import Cocoa
 
+// DEPRECATE
+
 @MainActor
 class ApplicationMenu: NSObject {
     let menu = NSMenu()
