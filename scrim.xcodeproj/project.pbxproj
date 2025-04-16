@@ -28,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D91F28102DB05FEA00C60CF4 /* Installation.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = Installation.org; sourceTree = "<group>"; };
+		D91F28112DB05FEA00C60CF4 /* ScrimProtocol.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScrimProtocol.org; sourceTree = "<group>"; };
 		D9552B1D2DA1F8A700B3AE5E /* scrim.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = scrim.xctestplan; sourceTree = "<group>"; };
 		D9AAEF3F2DA848EA00FC5F7D /* Scrim.help */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Scrim.help; sourceTree = "<group>"; };
 		D9AAEF7C2DA8563A00FC5F7D /* scrim-original_resize_128x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scrim-original_resize_128x.png"; sourceTree = "<group>"; };
@@ -125,10 +127,12 @@
 			children = (
 				D9AAEF7D2DA8563A00FC5F7D /* images */,
 				D9AAEF7E2DA8563A00FC5F7D /* inputs.xcfilelist */,
+				D91F28102DB05FEA00C60CF4 /* Installation.org */,
 				D9AAEF7F2DA8563A00FC5F7D /* Makefile */,
 				D9AAEF802DA8563A00FC5F7D /* OrgProtocol.org */,
 				D9AAEF812DA8563A00FC5F7D /* outputs.xcfilelist */,
 				D9AAEF822DA8563A00FC5F7D /* publish-doc.el */,
+				D91F28112DB05FEA00C60CF4 /* ScrimProtocol.org */,
 				D9AAEF832DA8563A00FC5F7D /* ScrimUserGuide.org */,
 				D9AAEF842DA8563A00FC5F7D /* style1.css */,
 			);
