@@ -34,6 +34,17 @@ extension AuthenticationWorkflow {
                     .multilineTextAlignment(.leading)
                     .lineSpacing(CGFloat(2))
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                
+                Button(action: copyToClipboard) {
+                    Label("Copy server-use-tcp to clipboard", systemImage: "document.on.document")
+                        .padding(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2))
+                }
+                
+                Text("After completing the above, proceed to the next section “Start Server”.")
+                    .font(.system(size: 14))
+                    .multilineTextAlignment(.leading)
+                    .lineSpacing(CGFloat(2))
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
 
                 Spacer()
 
@@ -71,15 +82,21 @@ extension AuthenticationWorkflow {
               ("In your Emacs initialization file, set the variable `server‑use‑tcp` to a " +
                  "non-nil value. (typically `t`)\n"),
               ("This can be done by using the command `M-x customize‑variable` to set the variable " +
-                 "`server‑use‑tcp`.\n"),
-              ("After completing the above, proceed to the next section " +
-                 " “Start Server”.")
+                 "`server‑use‑tcp`.\n")
             ]
 
             let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
                                                  options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))
 
             return bodyText
+        }
+        
+        func copyToClipboard() {
+            let textToCopy = "server-use-tcp"
+            let pasteboard = NSPasteboard.general
+            pasteboard.clearContents()
+            pasteboard.setString(textToCopy, forType: .string)
+            
         }
     }
 }
