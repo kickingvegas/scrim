@@ -126,5 +126,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSWindow.allowsAutomaticWindowTabbing = false
+        
+        if launchedByURL {
+            NSApplication.shared.windows.forEach { window in
+                window.orderOut(nil)
+            }
+        }
     }
 }
