@@ -1,61 +1,61 @@
 {
   "images" : [
     {
-      "filename" : "scrim-master_resize_16x.png",
+      "filename" : "scrim_resize_16x.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
-      "filename" : "scrim-master_resize_32x.png",
+      "filename" : "scrim_resize_32x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
     },
     {
-      "filename" : "scrim-master_resize_32x 1.png",
+      "filename" : "scrim_resize_32x 1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
     },
     {
-      "filename" : "scrim-master_resize_64x.png",
+      "filename" : "scrim_resize_64x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "32x32"
     },
     {
-      "filename" : "scrim-master_resize_128x.png",
+      "filename" : "scrim_resize_128x.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
-      "filename" : "scrim-master_resize_256x.png",
+      "filename" : "scrim_resize_256x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
-      "filename" : "scrim-master_resize_256x 1.png",
+      "filename" : "scrim_resize_256x 1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
-      "filename" : "scrim-master_resize_512x.png",
+      "filename" : "scrim_resize_512x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "scrim-master_resize_512x 1.png",
+      "filename" : "scrim_resize_512x 1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "scrim-master_resize_1024x.png",
+      "filename" : "scrim_resize_1024x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
