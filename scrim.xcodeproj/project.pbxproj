@@ -28,8 +28,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D900D6712DB4B52D00D9AEB7 /* insert-org-link-minibuffer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "insert-org-link-minibuffer.png"; sourceTree = "<group>"; };
+		D900D6722DB4B52D00D9AEB7 /* org-protocol-request-troubleshoot.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "org-protocol-request-troubleshoot.svg"; sourceTree = "<group>"; };
+		D900D6732DB4B52D00D9AEB7 /* TextEdit-OrgLink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TextEdit-OrgLink.png"; sourceTree = "<group>"; };
 		D91F28102DB05FEA00C60CF4 /* Installation.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = Installation.org; sourceTree = "<group>"; };
 		D91F28112DB05FEA00C60CF4 /* ScrimProtocol.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = ScrimProtocol.org; sourceTree = "<group>"; };
+		D93B480D2DB2FEE9006C57E8 /* UsingScrim.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = UsingScrim.org; sourceTree = "<group>"; };
 		D9552B1D2DA1F8A700B3AE5E /* scrim.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = scrim.xctestplan; sourceTree = "<group>"; };
 		D9AAEF3F2DA848EA00FC5F7D /* Scrim.help */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Scrim.help; sourceTree = "<group>"; };
 		D9AAEF7C2DA8563A00FC5F7D /* scrim-original_resize_128x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scrim-original_resize_128x.png"; sourceTree = "<group>"; };
@@ -42,6 +46,11 @@
 		D9AAEF842DA8563A00FC5F7D /* style1.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = style1.css; sourceTree = "<group>"; };
 		D9AAEF872DA8565600FC5F7D /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		D9AAEF882DA8565600FC5F7D /* README.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.org; sourceTree = "<group>"; };
+		D9CB73262DB6EE8B009A038F /* org-protocol-capture-example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "org-protocol-capture-example.png"; sourceTree = "<group>"; };
+		D9CB73272DB6EEB0009A038F /* UsingScrim-Captee.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = "UsingScrim-Captee.org"; sourceTree = "<group>"; };
+		D9CB73282DB6EEB0009A038F /* UsingScrim-Capture.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = "UsingScrim-Capture.org"; sourceTree = "<group>"; };
+		D9CB73292DB6EEB0009A038F /* UsingScrim-ScrimProtocol.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = "UsingScrim-ScrimProtocol.org"; sourceTree = "<group>"; };
+		D9CB732A2DB6EEB0009A038F /* UsingScrim-StoreLink.org */ = {isa = PBXFileReference; lastKnownFileType = text; path = "UsingScrim-StoreLink.org"; sourceTree = "<group>"; };
 		D9FFC2812D9B186C000DBD21 /* Scrim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FFC2942D9B186D000DBD21 /* scrimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = scrimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FFC29E2D9B186D000DBD21 /* scrimUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = scrimUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +126,10 @@
 		D9AAEF7D2DA8563A00FC5F7D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D9CB73262DB6EE8B009A038F /* org-protocol-capture-example.png */,
+				D900D6712DB4B52D00D9AEB7 /* insert-org-link-minibuffer.png */,
+				D900D6722DB4B52D00D9AEB7 /* org-protocol-request-troubleshoot.svg */,
+				D900D6732DB4B52D00D9AEB7 /* TextEdit-OrgLink.png */,
 				D9AAEF7C2DA8563A00FC5F7D /* scrim-original_resize_128x.png */,
 			);
 			path = images;
@@ -135,6 +148,11 @@
 				D91F28112DB05FEA00C60CF4 /* ScrimProtocol.org */,
 				D9AAEF832DA8563A00FC5F7D /* ScrimUserGuide.org */,
 				D9AAEF842DA8563A00FC5F7D /* style1.css */,
+				D93B480D2DB2FEE9006C57E8 /* UsingScrim.org */,
+				D9CB73272DB6EEB0009A038F /* UsingScrim-Captee.org */,
+				D9CB73282DB6EEB0009A038F /* UsingScrim-Capture.org */,
+				D9CB73292DB6EEB0009A038F /* UsingScrim-ScrimProtocol.org */,
+				D9CB732A2DB6EEB0009A038F /* UsingScrim-StoreLink.org */,
 			);
 			path = help;
 			sourceTree = "<group>";

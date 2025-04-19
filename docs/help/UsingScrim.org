@@ -1,0 +1,23 @@
+# Copyright © 2025 Charles Choi
+#
+#+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
+#+HTML_HEAD: <meta name="keywords" content="using, scrim, tutorial"/>
+#+HTML_HEAD: <meta name="description" content="Using Scrim"/>
+#+HTML_HEAD: <meta name="robots" content="index, anchors"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
+#+HTML: <a name="UsingScrim"></a>
+* Using Scrim
+
+Now that Scrim is setup to talk to Emacs, read the following tutorial pages to learn what you can do with *Scrim*.
+
+- [[file:UsingScrim-StoreLink.org][Share links to Emacs with Org Protocol]]
+- [[file:UsingScrim-ScrimProtocol.org][Open a file, directory, or Info page with Scrim Protocol]]
+- [[file:UsingScrim-Capture.org][Use Org Protocol ~capture~ to share text and links to Emacs]]
+- [[file:UsingScrim-Captee.org][Work with Captee to make Org Protocol requests]]
+
+-----
+#+HTML: <footer class="footer">
+#+HTML: <span class="footer-section left">⟨ <a href='Installation.html'>Installation</a></span>
+#+HTML: <span class="footer-section center"><a href='ScrimUserGuide.html'>Home</a></span>
+#+HTML: <span class="footer-section right"><a href='UsingScrim-StoreLink.html'>Share Links</a> ⟩</span>
+#+HTML: </footer>

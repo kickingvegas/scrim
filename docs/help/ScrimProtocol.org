@@ -71,3 +71,9 @@ Note that the value of ~node~ must be [[https://en.wikipedia.org/wiki/Percent-en
 #+end_example
 
 
+-----
+#+HTML: <footer class="footer">
+#+HTML: <span class="footer-section left">⟨ <a href='OrgProtocol.html'>Org Protocol</a></span>
+#+HTML: <span class="footer-section center"><a href='ScrimUserGuide.html'>Home</a></span>
+#+HTML: <span class="footer-section right"><a href='faq.html'>FAQ</a> ⟩</span>
+#+HTML: </footer>

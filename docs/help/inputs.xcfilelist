@@ -3,3 +3,8 @@ $(SRCROOT)/docs/help/Installation.org
 $(SRCROOT)/docs/help/OrgProtocol.org
 $(SRCROOT)/docs/help/ScrimProtocol.org
 $(SRCROOT)/docs/help/faq.org
+$(SRCROOT)/docs/help/UsingScrim.org
+$(SRCROOT)/docs/help/UsingScrim-Captee.org
+$(SRCROOT)/docs/help/UsingScrim-Capture.org
+$(SRCROOT)/docs/help/UsingScrim-ScrimProtocol.org
+$(SRCROOT)/docs/help/UsingScrim-StoreLink.org

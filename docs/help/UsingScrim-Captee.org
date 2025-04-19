@@ -1,0 +1,26 @@
+# Copyright © 2025 Charles Choi
+#
+#+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
+#+HTML_HEAD: <meta name="keywords" content="using, scrim, captee"/>
+#+HTML_HEAD: <meta name="description" content="Using Scrim & Captee"/>
+#+HTML_HEAD: <meta name="robots" content="index, anchors"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
+#+HTML: <a name="UsingScrim-Captee"></a>
+* Using Scrim & Captee
+
+#+HTML: <p align="left"><a href="http://yummymelon.com/captee"><img src="images/captee-256.png" width="64px"/></a></p>
+
+ [[http://yummymelon.com/captee][Captee]] is a utility that lets you share links and text clippings from the macOS Share Menu using [[file:OrgProtocol.org][Org Protocol]]. The Captee app complements *Scrim* as it will do the work of building the Org Protocol URL request (supports both ~share-link~ and ~capture~).
+
+ The following event sequence shows how *Captee* and *Scrim* work together to get macOS content into Emacs.
+
+ macOS App → Share Menu → *Captee* → Org Protocol → *Scrim* → Emacs
+
+  Both *Captee* and *Scrim* are available as an app bundle on the Mac App Store.
+
+-----
+#+HTML: <footer class="footer">
+#+HTML: <span class="footer-section left">⟨ <a href='UsingScrim-Capture.html'>Sharing with Org Protocol <code>capture</code></a></span>
+#+HTML: <span class="footer-section center"><a href='ScrimUserGuide.html'>Home</a></span>
+#+HTML: <span class="footer-section right"><a href='UsingScrim.html'>Using Scrim ⟩</a></span>
+#+HTML: </footer>

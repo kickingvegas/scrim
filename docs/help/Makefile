@@ -39,6 +39,22 @@ build-helpbook:
 open-helpbook: $(TARGET_DIR)
 	open $(TARGET_DIR)/ScrimUserGuide.html
 
+.PHONY: open-using-scrim
+open-using-scrim: $(TARGET_DIR)
+	open $(TARGET_DIR)/UsingScrim.html
+
 .PHONY: clean-helpbook
 clean-helpbook: $(TARGET_DIR)
 	/bin/rm -rf $(TARGET_DIR)/*
+
+.PHONY: entr
+entr:
+	find . -name '*.org' | entr $(MAKE) create-helpbook
+
+.PHONY: devserver
+devserver:
+	cd $(TARGET_DIR); python -m http.server
+
+.PHONY: user-guide
+dev-user-guide:
+	open "http://localhost:8000/ScrimUserGuide.html"

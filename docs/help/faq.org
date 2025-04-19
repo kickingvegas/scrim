@@ -8,10 +8,73 @@
 #+HTML: <a name="FrequentlyAskedQuestions"></a>
 * Frequently Asked Questions
 
+** Does Scrim need to be continuously running?
+
+No. In fact, *Scrim* is designed to be run in the background whenever a URL request with scheme ~org-protocol::/~ or ~scrim://~ is made. *Scrim* should not be configured as a login item.
+
+That said, for *Scrim* to work, it presumes that Emacs server is running. Note that *Scrim* will /not/ automatically launch Emacs if it receives a URL request.
+
+** So, I've sent a link to Emacs. Where is it?
+
+Org links sent from *Scrim* are stored in a “last in, first out” (LIFO) queue in Emacs. In an Org buffer, use the command ~org-insert-last-stored-link~ (binding ~C-c M-l~) to paste the last link stored.
+
+Alternately the command ~org-insert-link~ (binding ~C-c C-l~) will let you select from the queue which link to paste into the Org buffer.
+
+** I tried to send an Org Protocol capture URL request and nothing happened.
+
+First thing you should always check: Is Emacs server running? If not, then start it. Note that *Scrim* will /not/ automatically launch Emacs if it receives a URL request.
+
+Use the diagram below to troubleshoot your Org Protocol ~capture~ request.
+
+#+BEGIN_SRC dot :file images/org-protocol-request-troubleshoot.svg :cmdline -Tsvg :exports results
+    digraph "Org Protocol Troubleshooter" { 
+        rankdir=TB;
+        node [shape="rect", color="black", style="filled", fillcolor="white", fontcolor="black", fontname="Helvetica", fontsize=10];
+        edge [fontcolor="black", fontname="Helvetica", fontsize=10];
+
+        a[label="Start"]
+        
+        a1[label="Issue\norg-protocol://capture\nrequest"];
+
+        {
+            a2[shape="diamond", label="Emacs Server\nRunning?"];
+            a4[label="Start Emacs server"];
+            rank=same;
+            rankdir=LR;
+        }
+        a3[shape="diamond", label="Emacs setup\nfor\nOrg Protocol\ncapture?"];
+
+        a5[label="Configure\nOrg Protocol\ncapture"];
+        a6[shape="diamond", label="URL request\nsuccess?"];
+        a7[label="Audit/Amend\nOrg Protocol\ncapture\nconfiguration"];
+        a8[label="Success!"];
+
+        a -> a1
+
+        a1 -> a2;
+        a2 -> a4 [label="N"];
+        a4 -> a [label="Retry"];
+        a2 -> a3 [label="Y"];
+
+        a3 -> a5 [label="N"];
+        a5 -> a [label="Retry"];
+        a3 -> a6 [label="Y"];
+        
+        a6 -> a7 [label="N"];
+        a7 -> a [label="Retry"];
+
+        a6 -> a8 [label=Y];
+  }
+#+END_SRC
+
+#+RESULTS:
+[[file:images/org-protocol-request-troubleshoot.svg]]
+
+
+
 ** Why can't I have an app call emacsclient?
 
 macOS apps are packaged so that they are by default not permitted to access other programs outside of their respective sandboxes. While an app can have its default security restrictions lifted, this makes it vulnerable to an attack which is not desirable.
-
 
 ** Why setup TCP Server?
 
@@ -26,3 +89,4 @@ The Emacs server TCP socket communication design presumes that both the server a
 This shared secret file is however outside of the sandbox for the *Scrim* app. Files outside an app's sandbox are by default not accessible to it. To get permission to access it, the user must manually select the shared secret file from the macOS file dialog. This is a “one-time” operation as the app can remember this shared secret file on subsequent runs of *Scrim*.
 
 Note that resetting or deleting the *Scrim* app will lose this memory and the user will have to again select the shared secret file.
+
