@@ -36,7 +36,16 @@ extension AuthenticationWorkflow {
 
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     
+                Button(action: copyToClipboard) {
+                    Label("Copy to clipboard", systemImage: "document.on.document")
+                        .padding(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2))
+                }
                 
+                Text(genBodyText2())
+                    .font(.system(size: 14))
+                    .multilineTextAlignment(.leading)
+                    .lineSpacing(CGFloat(2))
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
 
                 Spacer()
 
@@ -70,23 +79,43 @@ extension AuthenticationWorkflow {
 
         func genBodyText() -> AttributedString {
             let srcText = [
-              "Let's test your Emacs server setup by doing the following:\n",
+              "Do the following to test your Emacs server setup:\n",
               "  1. Relaunch Emacs to pick up the previous configuration changes.",
               "  2. Launch the Terminal app.",
-              ("  3. Run the following command from your home directory where\n" + "      `<user-emacs-directory>` is your Emacs initialization directory:\n\n" +
-              "      `$ ls <user-emacs-directory>/server/server`\n"),
-              "If all goes well then the file named `server` should be listed."
+              "  3. Change your directory using `cd` to `user-emacs-directory` (where your `init.el` file is).",
+              "      Common locations for `user-emacs-directory` are (note: `~` is your home directory):",
+              "        • `~/.emacs.d`",
+              "        • `~/.config/emacs`",
+              "  4. Run the following command in the Terminal app:\n",
+              "      `$ ls server/server`"
             ]
 
             let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
                                                  options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))
-
             return bodyText
+        }
+        
+        func genBodyText2() -> AttributedString {
+            let srcText = [
+                "If all goes well then the file named `server` should be listed."
+            ]
+            
+            let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
+                                                 options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))
+            
+            return bodyText
+        }
+        
+        func copyToClipboard() {
+            let textToCopy = "ls server/server"
+            let pasteboard = NSPasteboard.general
+            pasteboard.clearContents()
+            pasteboard.setString(textToCopy, forType: .string)
         }
     }
 }
 
 #Preview {
     @Previewable @State var workflowState: AuthenticationWorkflow.AuthenticationWorkflowState = .testServer
-    AuthenticationWorkflow.TestServerView(workflowState: $workflowState)
+    AuthenticationWorkflow.TestServerView(workflowState: $workflowState).frame(width: 800, height: 500)
 }

@@ -24,8 +24,7 @@ import OSLog
 
 class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
     lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    var menu: ApplicationMenu?
-    var didLaunch: Bool = false
+    var launchedByURL: Bool = false
     
     fileprivate let logger = Logger(subsystem: "com.yummymelon.scrim", category: "app")
 
@@ -36,7 +35,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
     func application(_ application: NSApplication, open urls: [URL]) {
         let emacsClient = ScrimNetworking.EmacsClient.shared
         let scrimDefaults = ScrimDefaults.shared
-
+        
+        launchedByURL = urls.count > 0
+        
         if let port = scrimDefaults.port,
            let host = scrimDefaults.host,
            let authKey = scrimDefaults.authKey,
@@ -48,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
                 case .success(_):
                     emacsClient.disconnect()
                     if let self {
-                        if self.didLaunch == false {
+                        if self.launchedByURL {
                             DispatchQueue.main.async {
                                 application.terminate(self)
                             }
@@ -122,21 +123,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
             self.logger.error("ERROR: unable to connect")
         }
     }
-
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
-        if let userInfo = notification.userInfo,
-           let value = userInfo["NSApplicationLaunchIsDefaultLaunchKey"] as? NSNumber {
-            didLaunch = value.boolValue
-        }
-
-        NSApplication.shared.windows.first?.tabbingMode = .disallowed
-        statusBarItem.button?.image = NSImage(named: NSImage.Name("Scrim Status Icon"))
-        statusBarItem.button?.imagePosition = .imageLeading
-
-        menu = ApplicationMenu()
-
-        if let menu = self.menu {
-            statusBarItem.menu = menu.createMenu()
+        NSWindow.allowsAutomaticWindowTabbing = false
+        
+        if launchedByURL {
+            NSApplication.shared.windows.forEach { window in
+                window.orderOut(nil)
+            }
         }
     }
 }

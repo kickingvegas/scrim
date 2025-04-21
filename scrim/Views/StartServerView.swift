@@ -34,6 +34,17 @@ extension AuthenticationWorkflow {
                     .multilineTextAlignment(.leading)
                     .lineSpacing(CGFloat(2))
                     .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                
+                Button(action: copyToClipboard) {
+                    Label("Copy to clipboard", systemImage: "document.on.document")
+                        .padding(EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2))
+                }
+                
+                Text(genBodyText2())
+                    .font(.system(size: 14))
+                    .multilineTextAlignment(.leading)
+                    .lineSpacing(CGFloat(2))
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
 
 
                 Spacer()
@@ -73,9 +84,7 @@ extension AuthenticationWorkflow {
               "  2. Load the library `org‑protocol`.\n",
               "Add the following lines to your Emacs initialization to do just that.\n",
               "    `(server-start)`",
-              "    `(require 'org-protocol)`\n",
-              ("After completing the above, let's test that your server with `org‑protocol` " +
-               "support is running.")
+              "    `(require 'org-protocol)`"
             ]
 
             let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
@@ -83,10 +92,29 @@ extension AuthenticationWorkflow {
 
             return bodyText
         }
+        
+        func genBodyText2() -> AttributedString {
+            let srcText = [
+                ("After completing the above, let's test that your server with `org‑protocol` " +
+                 "support is running.")
+            ]
+            
+            let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
+                                                 options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))
+            
+            return bodyText
+        }
+        
+        func copyToClipboard() {
+            let textToCopy = "(server-start)\n(require 'org-protocol)"
+            let pasteboard = NSPasteboard.general
+            pasteboard.clearContents()
+            pasteboard.setString(textToCopy, forType: .string)
+        }
     }
 }
 
 #Preview {
     @Previewable @State var workflowState: AuthenticationWorkflow.AuthenticationWorkflowState = .startServer
-    AuthenticationWorkflow.StartServerView(workflowState: $workflowState)
+    AuthenticationWorkflow.StartServerView(workflowState: $workflowState).frame(width: 800, height: 500)
 }

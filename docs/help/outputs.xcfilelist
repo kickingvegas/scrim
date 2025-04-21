@@ -3,4 +3,8 @@ $(SRCROOT)/Contents/Resources/en.lproj/Installation.html
 $(SRCROOT)/Contents/Resources/en.lproj/OrgProtocol.html
 $(SRCROOT)/Contents/Resources/en.lproj/ScrimProtocol.html
 $(SRCROOT)/Contents/Resources/en.lproj/faqProtocol.html
-
+$(SRCROOT)/Contents/Resources/en.lproj/UsingScrim.html
+$(SRCROOT)/Contents/Resources/en.lproj/UsingScrim-Captee.html
+$(SRCROOT)/Contents/Resources/en.lproj/UsingScrim-Capture.html
+$(SRCROOT)/Contents/Resources/en.lproj/UsingScrim-ScrimProtocol.html
+$(SRCROOT)/Contents/Resources/en.lproj/UsingScrim-StoreLink.html

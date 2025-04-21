@@ -60,3 +60,9 @@ Capture templates are a powerful feature of Org, allowing for rich import of dat
 
 
   
+-----
+#+HTML: <footer class="footer">
+#+HTML: <span class="footer-section left">⟨ <a href='UsingScrim.html'>Using Scrim</a></span>
+#+HTML: <span class="footer-section center"><a href='ScrimUserGuide.html'>Home</a></span>
+#+HTML: <span class="footer-section right"><a href='ScrimProtocol.html'>Scrim Protocol</a> ⟩</span>
+#+HTML: </footer>

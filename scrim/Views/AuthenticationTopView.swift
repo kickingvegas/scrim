@@ -56,8 +56,9 @@ extension AuthenticationWorkflow {
 
                 SetupScrimView(workflowState: $workflowState).tabItem {
                     Label("Setup Scrim", systemImage: "gearshape")
-                }.environment(scrimDefaults)
-                    .tag(AuthenticationWorkflowState.setupScrim)
+                }
+                .environment(scrimDefaults)
+                .tag(AuthenticationWorkflowState.setupScrim)
             }
             .tabViewStyle(.sidebarAdaptable)
             .animation(.easeInOut(duration: 0.2), value: workflowState)
