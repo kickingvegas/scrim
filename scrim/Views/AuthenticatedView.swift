@@ -31,7 +31,21 @@ struct AuthenticatedView: View {
                     .font(.system(size: 14))
                     .multilineTextAlignment(.leading)
                     .lineSpacing(CGFloat(2))
+                    .textSelection(.enabled)
                 
+                Button(action: help) {
+                    Label("Learn more about using Scrim", systemImage: "info.circle")
+                        .font(.title2)
+                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                }
+                
+                Text(genBodyText2())
+                    .font(.system(size: 14))
+                    .multilineTextAlignment(.leading)
+                    .lineSpacing(CGFloat(2))
+                    .textSelection(.enabled)
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+
                 Button(action: quit) {
                     Label("Exit Scrim", systemImage: "door.left.hand.open")
                         .font(.title2)
@@ -49,6 +63,10 @@ struct AuthenticatedView: View {
         .padding(EdgeInsets(top: 24, leading: 24, bottom: 24, trailing: 24))
     }
     
+    func help() {
+        NSHelpManager.shared.openHelpAnchor("UsingScrim", inBook: "Scrim")
+    }
+    
     func quit() {
         NSApplication.shared.terminate(nil)
     }
@@ -59,7 +77,17 @@ struct AuthenticatedView: View {
             "In addition, **Scrim** has its own custom URL scheme, `scrim://`.\nWith it you can:\n",
             "  - Open a file or directory in Emacs",
             "  - Open an Info page (node) in Emacs\n",
-            "For more information on the above, refer to “Scrim Help” in the menu bar.\n",
+            "Click on “Learn More” below to get started using Scrim."
+        ]
+        
+        let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
+                                             options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))
+        return bodyText
+    }
+    
+    
+    func genBodyText2() -> AttributedString {
+        let srcText = [
             ("Note that **Scrim** is designed to be run by macOS in the background "
              + "whenever an `org‑protocol://` or `scrim://` URL request is made. "
              + "**Scrim** is not intended to be running continuously.\n"

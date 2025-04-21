@@ -1,0 +1,39 @@
+# Copyright © 2025 Charles Choi
+#
+#+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
+#+HTML_HEAD: <meta name="keywords" content="using, scrim protocol, file, directory, info"/>
+#+HTML_HEAD: <meta name="description" content="Using Scrim Protocol"/>
+#+HTML_HEAD: <meta name="robots" content="index, anchors"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
+#+HTML: <a name="UsingScrim-ScrimProtocol"></a>
+* Open File or Directory Using Scrim Protocol
+
+*Scrim* also supports its own custom URL scheme ~scrim://~. The [[file:ScrimProtocol.org][Scrim Protocol]] lets you define URLs to open the following in Emacs:
+
+- File or directory
+- Info page (node)
+
+Going back to Terminal app, copy, paste, and run the following example to open your ~.profile~ file in your home directory.
+
+#+begin_example
+  open "scrim://open?file=~/.profile"
+#+end_example
+
+The result of this should be your ~.profile~ opened in Emacs. If you wanted to open a directory in ~dired~, you can specify instead a directory for the ~file~ query item.
+
+Here is an example of opening the Info page ~(elisp) Top~ using the Scrim Protocol. Copy, paste and run the following command in the Terminal app.
+
+#+begin_example
+  open "scrim://info?node=(elisp) Top"
+#+end_example
+
+The result of this should be the top node of the Elisp Info document opened in Emacs.
+
+Note the usage of whitespace in the URL request. This is possible because the ~open~ command will take its quoted argument (in this case double-quoted) and [[https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding][percent-encode]] it. Both the Org and Scrim protocol URL schemes require percent-encoding of any special characters.
+
+-----
+#+HTML: <footer class="footer">
+#+HTML: <span class="footer-section left">⟨ <a href='UsingScrim-StoreLink.html'>Sharing Links</a></span>
+#+HTML: <span class="footer-section center"><a href='ScrimUserGuide.html'>Home</a></span>
+#+HTML: <span class="footer-section right"><a href='UsingScrim-Capture.html'>Sharing with Org Protocol <code>capture</code></a> ⟩</span>
+#+HTML: </footer>

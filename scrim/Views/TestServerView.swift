@@ -83,14 +83,15 @@ extension AuthenticationWorkflow {
               "  1. Relaunch Emacs to pick up the previous configuration changes.",
               "  2. Launch the Terminal app.",
               "  3. Change your directory using `cd` to `user-emacs-directory` (where your `init.el` file is).",
-              "     Common locations for `user-emacs-directory` are `~/.emacs.d` or `~/.config/emacs`\n",
+              "      Common locations for `user-emacs-directory` are (note: `~` is your home directory):",
+              "        • `~/.emacs.d`",
+              "        • `~/.config/emacs`",
               "  4. Run the following command in the Terminal app:\n",
               "      `$ ls server/server`"
             ]
 
             let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
                                                  options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))
-
             return bodyText
         }
         

@@ -1,0 +1,59 @@
+# Copyright © 2025 Charles Choi
+#
+#+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
+#+HTML_HEAD: <meta name="keywords" content="using, scrim, link"/>
+#+HTML_HEAD: <meta name="description" content="Using Scrim"/>
+#+HTML_HEAD: <meta name="robots" content="index, anchors"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
+#+HTML: <a name="UsingScrim-StoreLink"></a>
+* Share Links to Emacs with Org Protocol
+
+** Storing & Pasting an Org Link via ~open~
+Let’s start with sending an Org link (in this case, https://melpa.org) to Emacs.
+
+First, open the Terminal app in the ~/Applications/Utilities~ folder.
+
+Copy, paste, and run the following string into the command line.
+
+#+begin_example
+  open "org-protocol://store-link?title=MELPA&url=https://melpa.org"
+#+end_example
+
+You should see the following message in your Emacs mini-buffer:
+
+#+HTML: <img src="images/insert-org-link-minibuffer.png" width="80%" style="border: solid thin;"/>
+
+This message lets you know that the Org link has been stored by Emacs. Org links are stored in a LIFO ("Last In, First Out") queue. They can be pasted into an Org buffer using the following commands:
+
+- ~org-insert-last-stored-link~ (binding: ~C-c M-l~)
+- ~org-insert-link~ (binding: ~C-c C-l~)
+
+In Emacs, open an Org buffer and use the binding  ~C-c M-l~ to paste the link. You should see the link [[https://melpa.org][MELPA]] in your Org buffer.
+
+As the mini-buffer message states, if you only want the URL, you can paste the link using ~C-y~.
+
+** macOS Integration
+
+Users familiar with ~emacsclient~ may seem unimpressed at this point, as the ~open~ command is substituted for it in the above example. However, programs run in the Terminal app have their security privileges /escalated/. Native macOS apps by default can /not/ call ~emacsclient~ because they do not have the security privilege to do so.
+
+Let's exercise *Scrim* from a macOS app then, in this case with the TextEdit app.
+
+- Open the TextEdit app in the ~/Applications~ folder, and create a new document.
+- Copy the following Org Protocol URL:
+#+begin_example
+     org-protocol://store-link?title=MELPA&url=https://melpa.org
+#+end_example
+- In the new document, from the menu bar select “Edit › Add Link…”.
+- A dialog will appear. Paste the Org Protocol URL into it and click “OK”.
+- You should see the following result in the new document.
+#+HTML: <img src="images/TextEdit-OrgLink.png" width="80%"/>
+
+Note that the Org Protocol link in the TextEdit document is “live” - clicking on it will store the MELPA link in Emacs just as in the example above.
+
+-----
+#+HTML: <footer class="footer">
+#+HTML: <span class="footer-section left">⟨ <a href='UsingScrim.html'>Using Scrim</a></span>
+#+HTML: <span class="footer-section center"><a href='ScrimUserGuide.html'>Home</a></span>
+#+HTML: <span class="footer-section right"><a href='UsingScrim-ScrimProtocol.html'>Open File or Directory</a> ⟩</span>
+#+HTML: </footer>
+

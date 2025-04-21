@@ -1,0 +1,93 @@
+# Copyright © 2025 Charles Choi
+#
+#+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
+#+HTML_HEAD: <meta name="keywords" content="using, org protocol, capture, template"/>
+#+HTML_HEAD: <meta name="description" content="Using Org Protocol Capture"/>
+#+HTML_HEAD: <meta name="robots" content="index, anchors"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
+#+HTML: <a name="UsingScrim-Capture"></a>
+* Using Org Protocol Capture
+
+The Org [[https://orgmode.org/manual/Capture.html][Capture]] feature provides a way to quickly store notes into an Org file. Many different kinds of notes can be defined by the user, where each different kind is defined as a /template/. All capture templates are defined in the customizable variable ~org-capture-templates~. Typically, an Org Capture note is created while inside Emacs.
+
+The Org Protocol ~capture~ sub-protocol extends Org Capture by allowing /external/ programs to access it. In other words, with Org Protocol, programs outside of Emacs can also create a capture note.
+
+In order to use Org Capture, you must have Emacs setup for it. This tutorial provides enough guidance to get you started with it but also notes that Org Capture is embarrassingly customizable. Readers are [[https://orgmode.org/manual/Capture-templates.html][encouraged to get a deeper understanding of it]] to make their own bespoke workflows.
+
+** Setup Org Capture
+
+The following setup makes the following presumptions:
+- The user keeps their Org files in a file system directory named ~org~ in their home directory.
+- The user desires to keep all captured notes in a single file ~~/org/notes.org~.
+
+The following Elisp code configures Emacs accordingly.  Put this in your ~init.el~ file.
+
+#+begin_src elisp :lexical no
+  (setopt org-directory "~/org")
+  (setopt org-default-notes-file (concat org-directory "/notes.org"))
+#+end_src
+
+** Setup Org Protocol Capture
+
+The following Elisp configuration puts a single template definition with key name "capture" into ~org-capture-templates~. This template differs from a regular [[https://orgmode.org/manual/Template-expansion.html][Org Capture template]] in that it has [[https://orgmode.org/manual/The-capture-protocol.html][different placeholder elements]] (~%:description~, ~%:annotation~, ~%i~) that are passed in via an Org Protocol URL request.
+
+#+begin_src elisp :lexical no
+  (setopt org-capture-templates
+          '(("capture"
+             "Org Protocol Capture"
+             entry
+             (file "") ; an empty string defaults to org-default-notes-file
+             (function (lambda ()
+                         (string-join
+                          '("* %:description"
+                            "%:annotation"
+                            "%i"
+                            "%?")
+                          "\n")))
+             :empty-lines 1)))
+#+end_src
+
+Note that in normal use, many different templates can be defined to create different kinds of notes. Only one template is shown here for brevity.
+
+If the Org Protocol URL request does not have a ~template~ query parameter, then a fallback template can be specified in the customizable variable ~org-protocol-default-template-key~. For this example, we will set it to ~"capture"~.
+
+#+begin_src elisp :lexical no
+  (setopt org-protocol-default-template-key "capture")
+#+end_src
+
+** Send Org Protocol ~capture~ request
+
+With the above configuration Elisp in place let's now exercise it by making an Org Protocol ~capture~ URL request. For this example, we will construct a request to capture the Org Mode home page.
+
+Copy, paste, and run the command below into the Terminal app:
+
+#+begin_example
+  open "org-protocol://capture?template=capture&url=https://orgmode.org&title=Org Mode Home&body=This is the Org Mode Website."
+#+end_example
+
+A capture window should appear in Emacs that looks like this:
+
+[[file:images/org-protocol-capture-example.png]]
+
+Note how the [[file:OrgProtocol.html][Org Protocol-specific template placeholder elements]] have been populated. Also note how the whitespaces in the URL request are not [[https://en.wikipedia.org/wiki/Percent-encoding][percent-encoded]].  That is because the ~open~ command will do it automatically for us. 
+
+
+** Cool, but constructing an Org Protocol ~capture~ request seems like a lot of work
+
+Org Protocol ~capture~ requests are really not meant to be constructed by hand. Rather, such URL requests are best constructed by another program. While ~org-protocol://~ is open for any other program to construct a request for it, *Scrim* has a companion app called Captee to make this easy for you. [[file:UsingScrim-Captee.org][Learn more about Captee in the next section]].
+
+
+
+* References
+- [[https://orgmode.org/manual/Capture-templates.html][Capture templates (The Org Manual)]]
+  - [[https://orgmode.org/manual/Template-elements.html][Template elements (The Org Manual)]]
+  - [[https://orgmode.org/manual/Template-expansion.html][Template expansion (The Org Manual)]]
+- [[https://orgmode.org/manual/The-capture-protocol.html][The capture protocol (The Org Manual)]]
+    
+-----
+#+HTML: <footer class="footer">
+#+HTML: <span class="footer-section left">⟨ <a href='UsingScrim-ScrimProtocol.html'>Using Scrim Protocol</a></span>
+#+HTML: <span class="footer-section center"><a href='ScrimUserGuide.html'>Home</a></span>
+#+HTML: <span class="footer-section right"><a href='UsingScrim-Captee.html'>Using Scrim &amp; Captee</a> ⟩</span>
+#+HTML: </footer>
+

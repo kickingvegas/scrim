@@ -26,18 +26,22 @@ While *Scrim* can work with any program that is capable of generating an ~org‑
 * Requirements
 - macOS 15.x (Sequoia)
 - *Scrim* is designed to work directly with the GNU Free Software Foundation version of Emacs 29.4+.
-  - The [[https://bitbucket.org/mituharu/emacs-mac/src/master/][Mitsuharu Yamamoto fork (aka Emacs Mac App)]] has been modified to natively support ~org‑protocol://~. If you use this, you do not need *Scrim*.
+  - The [[https://bitbucket.org/mituharu/emacs-mac/src/master/][Mitsuharu Yamamoto fork (aka Emacs Mac App)]] has been modified to natively support ~org‑protocol://~. If you use it, you do not need *Scrim*.
 - Your local setup of Emacs must run /server/ to support ~org‑protocol://~.
   - In addition, /server/ must be setup to use a TCP socket.
 
 * Table of Contents
 - [[file:Installation.org][Installation]]
+- [[file:UsingScrim.org][Using Scrim]]
 - [[file:OrgProtocol.org][Org Protocol]]
 - [[file:ScrimProtocol.org][Scrim Protocol]]
 - [[file:faq.org][Frequently Asked Questions]]
   
-* Let others know about Scrim
-Please rate and review *Scrim* on the App Store.
+* Rate & Review
+Please [[https://apps.apple.com/us/app/scrim/id6744040981?action=write-review][rate and review your experience]] with *Scrim* on the App Store. Your feedback is appreciated!
+
+* Discussion Board
+Get help from or share your thoughts with the collective on the [[https://github.com/kickingvegas/scrim/discussions][discussion board for Scrim]].
 
 * License & Source
 *Scrim* is GPLv3 licensed. The source for this program is located at https://github.com/kickingvegas/scrim.
@@ -49,4 +53,7 @@ Personal thanks goes out to:
 - Mark Rowe and Helge Heß for improving my understanding of macOS security policy which was instrumental to implementing *Scrim*.
 - ~wasamasa~ for their design notes on the /emacsclient/ protocol.
 
-
+-----
+#+HTML: <footer class="footer">
+#+HTML: <span class="footer-section right"><a href='Installation.html'>Installation</a> ⟩</span>
+#+HTML: </footer>

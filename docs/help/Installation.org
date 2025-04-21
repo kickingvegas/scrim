@@ -61,3 +61,9 @@ Note that this file selection should be a “one-time” operation only as *Scri
 - [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs-Server.html][Emacs Server (GNU Emacs Manual)]]
 - [[https://www.gnu.org/software/emacs/manual/html_node/emacs/TCP-Emacs-server.html][TCP Emacs server (GNU Emacs Manual)]]
 - [[https://en.wikipedia.org/wiki/Unix_domain_socket][Unix domain socket - Wikipedia]]
+
+-----
+#+HTML: <footer class="footer">
+#+HTML: <span class="footer-section left">⟨ <a href='ScrimUserGuide.html'>Scrim User Guide</a></span>
+#+HTML: <span class="footer-section right"><a href='UsingScrim.html'>Using Scrim</a> ⟩</span>
+#+HTML: </footer>
