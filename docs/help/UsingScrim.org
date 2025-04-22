@@ -8,7 +8,7 @@
 #+HTML: <a name="UsingScrim"></a>
 * Using Scrim
 
-Now that Scrim is setup to talk to Emacs, read the following tutorial pages to learn what you can do with *Scrim*.
+Now that *Scrim* is setup to talk to Emacs, read the following tutorial pages to learn what you can do with it.
 
 - [[file:UsingScrim-StoreLink.org][Share links to Emacs with Org Protocol]]
 - [[file:UsingScrim-ScrimProtocol.org][Open a file, directory, or Info page with Scrim Protocol]]

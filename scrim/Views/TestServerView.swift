@@ -70,7 +70,7 @@ extension AuthenticationWorkflow {
         }
 
         func goBack() {
-            workflowState = .welcome
+            workflowState = .startServer
         }
 
         func setupScrim() {
