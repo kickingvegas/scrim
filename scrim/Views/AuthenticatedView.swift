@@ -77,7 +77,7 @@ struct AuthenticatedView: View {
             "In addition, **Scrim** has its own custom URL scheme, `scrim://`.\nWith it you can:\n",
             "  - Open a file or directory in Emacs",
             "  - Open an Info page (node) in Emacs\n",
-            "Click on “Learn More” below to get started using Scrim."
+            "Click on “Learn more…” below to get started using Scrim."
         ]
         
         let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
