@@ -12,9 +12,9 @@
 [[file:images/scrim-original_resize_128x.png]]
 *Scrim* is an [[file:OrgProtocol.org::*Org Protocol][Org Protocol]] proxy for Emacs on macOS.
 
-With *Scrim*, 3^{rd} party native apps can send links and text clippings to an Emacs Org file by simply opening a custom URL scheme (~org‑protocol://~).
+With *Scrim*, 3^{rd} party native apps can send links and text clippings to an Emacs Org file via a URL request. The URL request uses a custom scheme (~org‑protocol://~). 
 
-*Scrim* is a native app that is designed to work with the security policies of macOS. No workarounds that involve relaxing security policy is required.
+*Scrim* is a native app that is designed to work with the security policies of macOS. No workarounds that involve relaxing security policy is needed.
 
 While *Scrim* can work with any program that is capable of generating an ~org‑protocol://~ request, it is intended to work in tandem with [[https://apps.apple.com/us/app/captee/id6446053750][Captee]], a utility to share links and text clippings from the macOS Share Menu, which many native macOS apps support.
 
