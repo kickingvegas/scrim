@@ -26,23 +26,49 @@ struct scrimApp: App {
     var emacsClient = ScrimNetworking.EmacsClient.shared
     var scrimDefaults = ScrimDefaults.shared
     
+    @State var windowShowing: Bool = true
+    @Environment(\.openWindow) var openWindow
+    
     var body: some Scene {
-        Window("Scrim", id: "main") {
+        WindowGroup {
             if scrimDefaults.authKey != nil {
                 AuthenticatedView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .onDisappear() {
+                        windowShowing = false
+                    }
+                    .onAppear() {
+                        windowShowing = true
+                    }
+                    
             } else {
                 AuthenticationWorkflow.AuthenticationTopView()
                     .environment(scrimDefaults)
                     .environment(emacsClient)
+                    .onDisappear() {
+                        windowShowing = false
+                    }
+                    .onAppear() {
+                        windowShowing = true
+                    }
             }
         }
         .commands {
+            CommandGroup(replacing: .newItem) {
+                Button("Setup") {
+                    openWindow(id: "main")
+                }
+                .disabled(windowShowing)
+                .help("Setup Scrim.")
+            }
+            
+            
             CommandGroup(after: .appInfo) {
                 if scrimDefaults.authKey != nil {
                     Divider()
                     Button("Reset") {
                         scrimDefaults.clearAuthBookmarkData()
+                        windowShowing = true
                     }
                     .help("This will reset Scrim.")
                 }
@@ -57,7 +83,6 @@ struct scrimApp: App {
                 .help("Your feedback is important to us! Please let us know what you think is up with Scrim.")
                 
                 Divider()
-                
             }
             //            CommandGroup(after: .help) {
             //                Divider()
@@ -92,10 +117,29 @@ struct scrimApp: App {
             //            }
         }
         
+        Window("Scrim", id: "main") {
+            if scrimDefaults.authKey != nil {
+                AuthenticatedView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .onDisappear {
+                        windowShowing = false
+                    }
+                    .onAppear() {
+                        windowShowing = true
+                    }
+            } else {
+                AuthenticationWorkflow.AuthenticationTopView()
+                    .environment(scrimDefaults)
+                    .environment(emacsClient)
+                    .onDisappear {
+                        windowShowing = false
+                    }
+                    .onAppear() {
+                        windowShowing = true
+                    }
+            }
+        }
         
-        //        Window("Setup", id: "setup") {
-        //            AuthenticationWorkflow.AuthenticationTopView().environment(scrimDefaults).environment(emacsClient)
-        //        }
     }
     
     func openMailFeedback() {
