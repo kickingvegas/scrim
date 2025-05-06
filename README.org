@@ -22,7 +22,7 @@ While *Scrim* can work with any program that is capable of generating an ~org‑
 
 
 * Mac App Store
-*Scrim* is available on the Mac App Store. (TBD)
+*Scrim* is available on the [[https://apps.apple.com/us/app/scrim/id6744040981][Mac App Store]].
 
 * License
 *Scrim* is GPLv3 licensed. 

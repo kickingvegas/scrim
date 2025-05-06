@@ -77,44 +77,29 @@ struct scrimApp: App {
             CommandGroup(after: .help) {
                 Divider()
                 
+                Button("Rate and Review") {
+                    guard let url = URL(string: "https://apps.apple.com/us/app/scrim/id6744040981?action=write-review") else {
+                        fatalError("unable to generate URL")
+                    }
+                    NSWorkspace.shared.open(url)
+                }
+                .help("Your feedback is important to us! Please rate and review Scrim on the App Store.")
+                
+                Button("Online Discussions") {
+                    guard let url = URL(string: "https://github.com/kickingvegas/scrim/discussions") else {
+                        fatalError("unable to generate URL")
+                    }
+                    NSWorkspace.shared.open(url)
+                }
+                .help("Join the community on GitHub and discuss how you use Scrim with others!")
+                
+                Divider()
+                
                 Button("Send Feedback…") {
                     openMailFeedback()
                 }
                 .help("Your feedback is important to us! Please let us know what you think is up with Scrim.")
-                
-                Divider()
             }
-            //            CommandGroup(after: .help) {
-            //                Divider()
-            //
-            //                Button("Rate and Review") {
-            //                    guard let url = URL(string: "https://apps.apple.com/us/app/captee/id6446053750?action=write-review") else {
-            //                        fatalError("unable to generate URL")
-            //                    }
-            //                    NSWorkspace.shared.open(url)
-            //                }
-            //                .help("Your feedback is important to us! Please rate and review Captee on the App Store.")
-            
-            //                Divider()
-            
-            //                Button("Online Discussions") {
-            //                    guard let url = URL(string: "https://github.com/kickingvegas/scrim/discussions") else {
-            //                        fatalError("unable to generate URL")
-            //                    }
-            //                    NSWorkspace.shared.open(url)
-            //                }
-            //                .help("Join the community on GitHub and discuss how you use Scrim with others!")
-            
-            //                Divider()
-            
-            //                Button("Scrim Source") {
-            //                    guard let url = URL(string: "https://github.com/kickingvegas/scrim") else {
-            //                        fatalError("unable to generate URL")
-            //                    }
-            //                    NSWorkspace.shared.open(url)
-            //                }
-            //                .help("Want to know what's inside? Peruse the source code for Scrim on GitHub.")
-            //            }
         }
         
         Window("Scrim", id: "main") {
