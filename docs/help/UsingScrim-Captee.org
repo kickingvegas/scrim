@@ -5,7 +5,7 @@
 #+HTML_HEAD: <meta name="description" content="Using Scrim - Scrim + Captee"/>
 #+HTML_HEAD: <meta name="robots" content="index, anchors"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
-#+HTML: <a name="UsingScrim-Captee"></a>
+#+HTML: <a name="UsingScrimCaptee"></a>
 * Using Scrim & Captee
 
 #+HTML: <p align="left"><a href="http://yummymelon.com/captee"><img src="images/captee-256.png" width="64px"/></a></p>

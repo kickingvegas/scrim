@@ -5,7 +5,7 @@
 #+HTML_HEAD: <meta name="description" content="Using Scrim - Share Links"/>
 #+HTML_HEAD: <meta name="robots" content="index, anchors"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
-#+HTML: <a name="UsingScrim-StoreLink"></a>
+#+HTML: <a name="UsingScrimStoreLink"></a>
 * Share Links to Emacs with Org Protocol
 
 ** Storing & Pasting an Org Link via ~open~
