@@ -2,7 +2,7 @@
 #
 #+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
 #+HTML_HEAD: <meta name="keywords" content="using, org protocol, capture, template"/>
-#+HTML_HEAD: <meta name="description" content="Using Org Protocol Capture"/>
+#+HTML_HEAD: <meta name="description" content="Using Scrim - Org Protocol Capture"/>
 #+HTML_HEAD: <meta name="robots" content="index, anchors"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
 #+HTML: <a name="UsingScrim-Capture"></a>
