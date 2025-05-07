@@ -57,6 +57,7 @@ public class ScrimDefaults: NSObject {
                 try parseAuthBookmarkData(data)
             } catch {
                 logger.debug("Unexpected condition in parseAuthBookmarkData: \(error)")
+                authKey = "server-unavailable"
             }
         } else {
             logger.debug("no authBookmark")
@@ -72,8 +73,9 @@ public class ScrimDefaults: NSObject {
         var stale = false;
 
         do {
+            // !!!: Note that .withoutImplicitStartAddressing is needed to handle case when Emacs server is not running.
             let bURL = try URL(resolvingBookmarkData: data,
-                               options: [.withSecurityScope],
+                               options: [.withSecurityScope, .withoutImplicitStartAccessing],
                                bookmarkDataIsStale: &stale)
             
             if bURL.startAccessingSecurityScopedResource() {
@@ -95,9 +97,7 @@ public class ScrimDefaults: NSObject {
 
                     if let last = tempList.last {
                         authKey = last
-                        // logger.debug("AuthKey: \(self.authKey ?? "unknown")")
                     }
-
                 }
                 
                 bURL.stopAccessingSecurityScopedResource()
