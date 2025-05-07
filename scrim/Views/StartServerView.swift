@@ -33,7 +33,7 @@ extension AuthenticationWorkflow {
                     .textSelection(.enabled)
                     .multilineTextAlignment(.leading)
                     .lineSpacing(CGFloat(2))
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 
                 Button(action: copyToClipboard) {
                     Label("Copy to clipboard", systemImage: "document.on.document")
@@ -82,7 +82,10 @@ extension AuthenticationWorkflow {
               "In your Emacs initialization file you will need to:\n",
               "  1. Start the Emacs server.",
               "  2. Load the library `org‑protocol`.\n",
-              "Add the following lines to your Emacs initialization to do just that.\n",
+              ("Open your Emacs initialization file (`~/.emacs`, `init.el`) " +
+               "using the command `M-x find-file` " +
+               "and append these lines at the end " +
+               "of the file to do this.\n"),
               "    `(server-start)`",
               "    `(require 'org-protocol)`"
             ]

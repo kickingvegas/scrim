@@ -33,8 +33,7 @@ extension AuthenticationWorkflow {
                     .font(.system(size: 14))
                     .multilineTextAlignment(.leading)
                     .lineSpacing(CGFloat(2))
-
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                     
                 Button(action: copyToClipboard) {
                     Label("Copy to clipboard", systemImage: "document.on.document")
@@ -82,11 +81,11 @@ extension AuthenticationWorkflow {
               "Do the following to test your Emacs server setup:\n",
               "  1. Relaunch Emacs to pick up the previous configuration changes.",
               "  2. Launch the Terminal app.",
-              "  3. Change your directory using `cd` to `user-emacs-directory` (where your `init.el` file is).",
+              "  3. Change your directory using `cd` to `user-emacs-directory`.",
               "      Common locations for `user-emacs-directory` are (note: `~` is your home directory):",
               "        • `~/.emacs.d`",
               "        • `~/.config/emacs`",
-              "  4. Run the following command in the Terminal app:\n",
+              "  4. Run the following command in the Terminal app:",
               "      `$ ls server/server`"
             ]
 

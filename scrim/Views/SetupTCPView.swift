@@ -33,7 +33,7 @@ extension AuthenticationWorkflow {
                     .font(.system(size: 14))
                     .multilineTextAlignment(.leading)
                     .lineSpacing(CGFloat(2))
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
                 
                 Button(action: copyToClipboard) {
                     Label("Copy server-use-tcp to clipboard", systemImage: "document.on.document")
@@ -79,10 +79,12 @@ extension AuthenticationWorkflow {
         func genBodyText() -> AttributedString {
             let srcText = [
               "For Scrim to work it must be setup as a TCP server.\n",
-              ("In your Emacs initialization file, set the variable `server‑use‑tcp` to a " +
+              ("In your Emacs initialization file (`.emacs` or `init.el`), set the variable `server‑use‑tcp` to a " +
                  "non-nil value. (typically `t`)\n"),
-              ("This can be done by using the command `M-x customize‑variable` to set the variable " +
-                 "`server‑use‑tcp`.\n")
+              ("If you are starting with a fresh install of Emacs, use the command " +
+               "`M-x describe-variable` and enter `server-use-tcp`. " +
+               "Click on the `customize` link and toggle its value to `on`. " +
+               "Use the `Apply and Save` button to save this setting into your newly created `~/.emacs` file.")
             ]
 
             let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),

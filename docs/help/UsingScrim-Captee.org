@@ -2,7 +2,7 @@
 #
 #+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
 #+HTML_HEAD: <meta name="keywords" content="using, scrim, captee"/>
-#+HTML_HEAD: <meta name="description" content="Using Scrim & Captee"/>
+#+HTML_HEAD: <meta name="description" content="Using Scrim - Scrim + Captee"/>
 #+HTML_HEAD: <meta name="robots" content="index, anchors"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
 #+HTML: <a name="UsingScrim-Captee"></a>

@@ -2,7 +2,7 @@
 #
 #+OPTIONS: toc:nil num:0 html-postamble:nil html-preamble:nil
 #+HTML_HEAD: <meta name="keywords" content="using, scrim, link"/>
-#+HTML_HEAD: <meta name="description" content="Using Scrim"/>
+#+HTML_HEAD: <meta name="description" content="Using Scrim - Share Links"/>
 #+HTML_HEAD: <meta name="robots" content="index, anchors"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
 #+HTML: <a name="UsingScrim-StoreLink"></a>
