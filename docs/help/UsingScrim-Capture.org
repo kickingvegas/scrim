@@ -5,7 +5,7 @@
 #+HTML_HEAD: <meta name="description" content="Using Scrim - Org Protocol Capture"/>
 #+HTML_HEAD: <meta name="robots" content="index, anchors"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
-#+HTML: <a name="UsingScrim-Capture"></a>
+#+HTML: <a name="UsingScrimCapture"></a>
 * Using Org Protocol Capture
 
 The Org [[https://orgmode.org/manual/Capture.html][Capture]] feature provides a way to quickly store notes into an Org file. Many different kinds of notes can be defined by the user, where each different kind is defined as a /template/. All capture templates are defined in the customizable variable ~org-capture-templates~. Typically, an Org Capture note is created while inside Emacs.

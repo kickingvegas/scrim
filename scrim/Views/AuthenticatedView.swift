@@ -88,7 +88,10 @@ struct AuthenticatedView: View {
     }
     
     func help() {
-        NSHelpManager.shared.openHelpAnchor("UsingScrim", inBook: "Scrim")
+        let mainBundle = Bundle.main
+        if let book = mainBundle.object(forInfoDictionaryKey: "CFBundleHelpBookName") as? String {
+            NSHelpManager.shared.openHelpAnchor("UsingScrim", inBook: book)
+        }
     }
     
     func quit() {

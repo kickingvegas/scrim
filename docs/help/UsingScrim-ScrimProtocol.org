@@ -5,7 +5,7 @@
 #+HTML_HEAD: <meta name="description" content="Using Scrim - Scrim Protocol"/>
 #+HTML_HEAD: <meta name="robots" content="index, anchors"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style1.css" />
-#+HTML: <a name="UsingScrim-ScrimProtocol"></a>
+#+HTML: <a name="UsingScrimScrimProtocol"></a>
 * Open File or Directory Using Scrim Protocol
 
 *Scrim* also supports its own custom URL scheme ~scrim://~. The [[file:ScrimProtocol.org][Scrim Protocol]] lets you define URLs to open the following in Emacs:

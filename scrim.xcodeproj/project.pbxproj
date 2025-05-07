@@ -197,7 +197,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9FFC2A82D9B186D000DBD21 /* Build configuration list for PBXNativeTarget "scrim" */;
 			buildPhases = (
-				D97B00872DCA8A1B0063D3C6 /* ShellScript */,
 				D9FFC27D2D9B186C000DBD21 /* Sources */,
 				D9FFC27E2D9B186C000DBD21 /* Frameworks */,
 				D9FFC27F2D9B186C000DBD21 /* Resources */,
@@ -330,28 +329,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		D97B00872DCA8A1B0063D3C6 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-				"$(SRCROOT)/docs/help/inputs.xcfilelist",
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-				"$(SRCROOT)/docs/help/outputs.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "make -C docs/help create-helpbook EMACS_APP_EXEC=/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D9FFC27D2D9B186C000DBD21 /* Sources */ = {
