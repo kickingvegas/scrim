@@ -20,42 +20,66 @@
 import SwiftUI
 
 struct AuthenticatedView: View {
+    @Environment(ScrimDefaults.self) var scrimDefaults
+    
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                Text("Scrim is setup.")
-                    .font(.largeTitle)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0 ))
                 
-                Text(genBodyText())
-                    .font(.system(size: 14))
-                    .multilineTextAlignment(.leading)
-                    .lineSpacing(CGFloat(2))
-                    .textSelection(.enabled)
-                
-                Button(action: help) {
-                    Label("Learn more about using Scrim", systemImage: "info.circle")
-                        .font(.title2)
-                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                if scrimDefaults.authKey == "server-unavailable" {
+                    Label("Unable to detect running Emacs Server for this setup", systemImage: "network.slash")
+                        .font(.largeTitle)
+                    
+                    Text(serverUnavailableText())
+                        .font(.system(size: 14))
+                        .multilineTextAlignment(.leading)
+                        .lineSpacing(CGFloat(2))
+                        .padding(EdgeInsets(top: 2, leading: 0, bottom: 0, trailing: 0))
+                    
+                    Spacer()
+                    
+                    Button(action: quit) {
+                        Label("Exit Scrim", systemImage: "door.left.hand.open")
+                            .font(.title2)
+                            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                    }
+                    
+                } else {
+                    Text("Scrim is setup.")
+                        .font(.largeTitle)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0 ))
+                    
+                    
+                    Text(genBodyText())
+                        .font(.system(size: 14))
+                        .multilineTextAlignment(.leading)
+                        .lineSpacing(CGFloat(2))
+                        .textSelection(.enabled)
+                    
+                    Button(action: help) {
+                        Label("Learn more about using Scrim", systemImage: "info.circle")
+                            .font(.title2)
+                            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                    }
+                    
+                    Text(genBodyText2())
+                        .font(.system(size: 14))
+                        .multilineTextAlignment(.leading)
+                        .lineSpacing(CGFloat(2))
+                        .textSelection(.enabled)
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                    
+                    Button(action: quit) {
+                        Label("Exit Scrim", systemImage: "door.left.hand.open")
+                            .font(.title2)
+                            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                    }
+                    
+                    Spacer()
+                    
+                    Text("Enjoy using **Scrim**!")
+                        .font(.system(size: 18))
                 }
-                
-                Text(genBodyText2())
-                    .font(.system(size: 14))
-                    .multilineTextAlignment(.leading)
-                    .lineSpacing(CGFloat(2))
-                    .textSelection(.enabled)
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-
-                Button(action: quit) {
-                    Label("Exit Scrim", systemImage: "door.left.hand.open")
-                        .font(.title2)
-                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
-                }
-                
-                Spacer()
-                
-                Text("Enjoy using **Scrim**!")
-                    .font(.system(size: 18))
             }
 
             Spacer()
@@ -85,7 +109,6 @@ struct AuthenticatedView: View {
         return bodyText
     }
     
-    
     func genBodyText2() -> AttributedString {
         let srcText = [
             ("Note that **Scrim** is designed to be run by macOS in the background "
@@ -98,9 +121,21 @@ struct AuthenticatedView: View {
                                              options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))
         return bodyText
     }
+    
+    func serverUnavailableText() -> AttributedString {
+        let srcText = [
+            "**Scrim** requires that Emacs server is always running.\n",
+            "Please exit **Scrim**, start Emacs server, and relaunch **Scrim**."
+        ]
+        
+        let bodyText = try! AttributedString(markdown: srcText.joined(separator: "  \n"),
+                                             options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))
+        return bodyText
+    }
 }
 
 #Preview {
-    AuthenticatedView().frame(width: 800, height: 500)
-
+    AuthenticatedView()
+        .environment(ScrimDefaults.shared)
+        .frame(width: 800, height: 500)
 }

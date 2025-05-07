@@ -49,11 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
                 case .success(_):
                     emacsClient.disconnect()
                     if let self {
-                        if self.launchedByURL {
-                            DispatchQueue.main.async {
-                                application.terminate(self)
-                            }
-                        }
+                        self.forceExit(self.launchedByURL)
                     }
                 case .failure(let error):
                     self?.logger.error("ERROR: \(error)")
@@ -61,8 +57,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
             }
             
             do {
+                // Test URL scheme
                 switch components.scheme {
                 case "org-protocol":
+                    if !["store-link", "capture"].contains(components.host) {
+                        self.logger.warning("Unknown Org Protocol sub-protocol: \(components.description)")
+                    }
+                    
                     try emacsClient.configure(host: host, port: port, authKey: authKey)
                     try emacsClient.setup(receiveHandler)
                     try emacsClient.connect {
@@ -109,18 +110,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, @unchecked Sendable {
                         
                     } else {
                         self.logger.error("unknown host/sub-protocol \(String(describing: components.host))")
+                        forceExit(launchedByURL)
                     }
 
                 default:
                     // THIS SHOULD NEVER HAPPEN.
                     self.logger.error("unknown scheme \(String(describing: components.scheme))")
+                    forceExit(launchedByURL)
                 }
                         
             } catch {
                 self.logger.error("\(error)")
+                forceExit(launchedByURL)
             }
         } else {
             self.logger.error("ERROR: unable to connect")
+            forceExit(launchedByURL)
+        }
+    }
+    
+    func forceExit(_ launchedByURL: Bool = false) {
+        if launchedByURL {
+            DispatchQueue.main.async {
+                NSApp.terminate(self)
+            }
         }
     }
     
