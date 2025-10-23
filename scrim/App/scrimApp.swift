@@ -106,6 +106,7 @@ struct scrimApp: App {
         Window("Scrim", id: "main") {
             if scrimDefaults.authKey != nil {
                 AuthenticatedView()
+                    .environment(scrimDefaults)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .onDisappear {
                         windowShowing = false
