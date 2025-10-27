@@ -519,7 +519,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = "${MARKETING_VERSION}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yummymelon.scrim;
 				PRODUCT_NAME = Scrim;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -550,7 +550,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = "${MARKETING_VERSION}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yummymelon.scrim;
 				PRODUCT_NAME = Scrim;
 				SWIFT_EMIT_LOC_STRINGS = YES;
