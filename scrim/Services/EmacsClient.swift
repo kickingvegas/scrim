@@ -183,12 +183,12 @@ extension ScrimNetworking {
             var message: String?
             switch messageType {
             case .eval:
-                message = "-eval \(quote(payload))\n"
+                message = "-eval \(quote(payload)) \n"
             case .file:
-                message = "-nowait -file \(quote(payload))\n"
+                message = "-nowait -file \(quote(payload)) \n"
                 
             case .orgProtocol:
-                message = "-file \(quote(payload))\n"
+                message = "-file \(quote(payload)) \n"
             }
             
             if let message {
