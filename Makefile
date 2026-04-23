@@ -1,5 +1,5 @@
 ##
-# Copyright 2025 Charles Y. Choi
+# Copyright 2025-2026 Charles Y. Choi
 #
 
 TIMESTAMP := $(shell /bin/date "+%Y%m%d_%H%M%S")
@@ -62,7 +62,7 @@ create-merge-development-branch: checkout-development
 
 ## Create GitHub pull request for development
 .PHONY: create-pr
-create-pr:
+create-pr:  create-tag
 	gh pr create --base development --fill
 
 .PHONY: create-patch-pr
@@ -76,13 +76,13 @@ create-release-pr: create-merge-development-branch
 --title "Merge development to main $(TIMESTAMP)" \
 --fill-verbose
 
-.PHONY: create-release-tag
-create-release-tag: checkout-main
+.PHONY: create-tag
+create-tag:
 	git tag $(RELEASE_TAG)
 	git push origin $(RELEASE_TAG)
 
 .PHONY: create-gh-release
-create-gh-release: create-release-tag
+create-gh-release:
 	gh release create --draft --title "v$(VERSION)" --generate-notes $(RELEASE_TAG)
 
 .PHONY: test
