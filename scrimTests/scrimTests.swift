@@ -242,14 +242,14 @@ struct ScrimTests {
         }
         
         @Test(arguments: [
-            ("mary.txt", ScrimNetworking.EmacsClientMessageType.file, "-nowait -file mary.txt\n"),
-            ("~/.bashrc", ScrimNetworking.EmacsClientMessageType.file, "-nowait -file ~/.bashrc\n"),
+            ("mary.txt", ScrimNetworking.EmacsClientMessageType.file, "-nowait -file mary.txt \n"),
+            ("~/.bashrc", ScrimNetworking.EmacsClientMessageType.file, "-nowait -file ~/.bashrc \n"),
             ("org-protocol://store-link?url=https://emacs.org&title=Emacs",
              ScrimNetworking.EmacsClientMessageType.orgProtocol,
-             "-file org&-protocol://store&-link?url=https://emacs.org&&title=Emacs\n"),
+             "-file org&-protocol://store&-link?url=https://emacs.org&&title=Emacs \n"),
             ("org-protocol://capture?url=http://yummymelon.com/devnull/finally-supporting-os-appearance-changes.html&title=nfdn:%20NFDN%20Finally%20Supporting%20OS%20Appearance%20Changes&template=c&body=oh%20hai.%0A%0Athis%20is%20a%20message.",
              ScrimNetworking.EmacsClientMessageType.orgProtocol,
-             "-file org&-protocol://capture?url=http://yummymelon.com/devnull/finally&-supporting&-os&-appearance&-changes.html&&title=nfdn:%20NFDN%20Finally%20Supporting%20OS%20Appearance%20Changes&&template=c&&body=oh%20hai.%0A%0Athis%20is%20a%20message.\n")
+             "-file org&-protocol://capture?url=http://yummymelon.com/devnull/finally&-supporting&-os&-appearance&-changes.html&&title=nfdn:%20NFDN%20Finally%20Supporting%20OS%20Appearance%20Changes&&template=c&&body=oh%20hai.%0A%0Athis%20is%20a%20message. \n")
         ])
         func wrapClientPayload(testValues: (String, ScrimNetworking.EmacsClientMessageType, String))  {
             let input = testValues.0
